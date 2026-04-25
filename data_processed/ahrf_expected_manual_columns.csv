@@ -1,0 +1,12 @@
+expected_column
+state
+year
+cardiologists_count
+primary_care_physicians_count
+total_physicians_count
+state_population
+cardiologists_per_100k
+primary_care_physicians_per_100k
+total_physicians_per_100k
+source_file
+notes
