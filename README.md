@@ -9,12 +9,12 @@ The intended analysis is a state-level study of SGLT2i uptake in Medicaid, with 
 The current primary analysis-ready file is:
 
 ```text
-data_processed/sglt2_state_quarter_rates_all_products_50dc_excluding_2020.csv
+for_analysis/sglt2_state_quarter_rates_all_products_50dc_excluding_2020.csv
 ```
 
 This file contains quarterly SGLT2i prescription counts and rates per 10,000 Medicaid enrollees for the 50 U.S. states plus DC. It excludes 2020 because the available 2020 SDUD extract contains only Q4. It also excludes PR and XX because they are not part of the 50-state/DC analytic sample. The denominator file currently supports 2015-2019, 2021-2024, and 2025 Q1-Q2. Therefore, the current quarterly rate file has 1,938 data rows: 51 jurisdictions times 38 quarters.
 
-Use this as the main outcome file unless you are rebuilding the extraction pipeline from raw SDUD files.
+Use `for_analysis/` for modelling and figures. The copies in `data_processed/` are the script-generated source outputs.
 
 ## Research Aim
 
@@ -42,9 +42,16 @@ Interpretation: adjusted incidence rate ratio for SGLT2i prescribing rate
 .
 |-- R-analysis.Rproj
 |-- README.md
+|-- for_analysis/
+|   |-- README.md
+|   |-- sglt2_state_quarter_rates_all_products_50dc_excluding_2020.csv
+|   |-- sglt2_state_quarter_rates_single_agent_50dc_excluding_2020.csv
+|   |-- sglt2_state_quarter_rates_empa_dapa_50dc_excluding_2020.csv
+|   `-- sglt2_national_quarterly_rates_50dc_excluding_2020.csv
 |-- data_raw/
 |   |-- product.txt
 |   |-- package.txt
+|   |-- sdud/
 |   `-- medicaid_enrolment/
 |       `-- medicaid-enrollment-new-adult-group-02052026.csv
 |-- data_processed/
@@ -71,7 +78,7 @@ Interpretation: adjusted incidence rate ratio for SGLT2i prescribing rate
 `-- output/
 ```
 
-Important current-state note: processed SDUD outputs are present in `data_processed/`, but `data_raw/sdud/` is not currently present in this working folder. To rerun the all-year SDUD extraction from scratch, recreate `data_raw/sdud/` and add the annual SDUD CSV files there.
+Important current-state note: the raw SDUD files are in `data_raw/sdud/`, but that folder is intentionally ignored by git because it is several GB. The clean analysis-ready tables are copied into `for_analysis/` to avoid digging through all generated files in `data_processed/`.
 
 Expected SDUD raw files from the prior extraction notes were:
 
@@ -278,6 +285,7 @@ Main output:
 
 ```text
 data_processed/sglt2_state_quarter_rates_all_products_50dc_excluding_2020.csv
+for_analysis/sglt2_state_quarter_rates_all_products_50dc_excluding_2020.csv
 ```
 
 Sensitivity outputs:
@@ -286,6 +294,9 @@ Sensitivity outputs:
 data_processed/sglt2_state_quarter_rates_single_agent_50dc_excluding_2020.csv
 data_processed/sglt2_state_quarter_rates_empa_dapa_50dc_excluding_2020.csv
 data_processed/sglt2_national_quarterly_rates_50dc_excluding_2020.csv
+for_analysis/sglt2_state_quarter_rates_single_agent_50dc_excluding_2020.csv
+for_analysis/sglt2_state_quarter_rates_empa_dapa_50dc_excluding_2020.csv
+for_analysis/sglt2_national_quarterly_rates_50dc_excluding_2020.csv
 ```
 
 ### 4. Create secondary state-year rate files

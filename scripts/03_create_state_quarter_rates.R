@@ -52,8 +52,11 @@ sglt2_main_file <- here(
   "sglt2_state_quarter_all_products_2015_2025.csv"
 )
 
+analysis_output_dir <- here("for_analysis")
+
 dir.create(here("data_processed"), showWarnings = FALSE)
 dir.create(enrolment_raw_dir, recursive = TRUE, showWarnings = FALSE)
+dir.create(analysis_output_dir, showWarnings = FALSE)
 
 # ------------------------------------------------------------
 # 1. Helper functions
@@ -91,6 +94,19 @@ check_required_columns <- function(data, required_cols, file_path) {
   }
 
   invisible(data)
+}
+
+copy_for_analysis <- function(file_path) {
+  if (!file.exists(file_path)) {
+    warning("Cannot copy missing analysis file: ", file_path)
+    return(invisible(FALSE))
+  }
+
+  file.copy(
+    from = file_path,
+    to = file.path(analysis_output_dir, basename(file_path)),
+    overwrite = TRUE
+  )
 }
 
 quarter_from_month <- function(month) {
@@ -566,5 +582,26 @@ for (i in seq_len(nrow(sensitivity_files))) {
     warning("Sensitivity file not found, skipping: ", input_file)
   }
 }
+
+analysis_ready_files <- c(
+  here(
+    "data_processed",
+    "sglt2_state_quarter_rates_all_products_50dc_excluding_2020.csv"
+  ),
+  here(
+    "data_processed",
+    "sglt2_state_quarter_rates_single_agent_50dc_excluding_2020.csv"
+  ),
+  here(
+    "data_processed",
+    "sglt2_state_quarter_rates_empa_dapa_50dc_excluding_2020.csv"
+  ),
+  here(
+    "data_processed",
+    "sglt2_national_quarterly_rates_50dc_excluding_2020.csv"
+  )
+)
+
+walk(analysis_ready_files, copy_for_analysis)
 
 message("Done creating state-quarter SGLT2 prescribing rate datasets.")
