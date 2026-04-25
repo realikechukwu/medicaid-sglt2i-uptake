@@ -1,0 +1,10 @@
+sglt2_drug,combination_product,rows,prescriptions,n_ndcs
+canagliflozin,FALSE,11747,4509987,5
+canagliflozin,TRUE,10114,351579,8
+dapagliflozin,FALSE,9176,10300918,8
+dapagliflozin,TRUE,8267,412152,7
+empagliflozin,FALSE,15407,24457420,8
+empagliflozin,TRUE,29416,1424274,30
+ertugliflozin,FALSE,4986,4399148,6
+ertugliflozin,TRUE,4205,289833,16
+sotagliflozin,FALSE,416,4054,4

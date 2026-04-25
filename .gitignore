@@ -1,0 +1,40 @@
+# macOS / local filesystem metadata
+.DS_Store
+**/.DS_Store
+
+# R / RStudio local state
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+
+# Large raw SDUD source files
+# These annual Medicaid SDUD CSVs are several GB in total and should not be committed.
+data_raw/sdud/
+
+# Local database and transient query files
+*.duckdb
+*.duckdb.wal
+*.duckdb.tmp
+data_processed/sdud_analysis.duckdb*
+
+# Script and package caches
+.Rcache/
+renv/library/
+renv/staging/
+packrat/lib*/
+packrat/src/
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+~$*
+
+# Generated manuscript/report intermediates
+*.aux
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
