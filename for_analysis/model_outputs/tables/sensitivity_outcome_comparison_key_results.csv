@@ -1,0 +1,13 @@
+outcome,exposure,comparison_or_unit,term,irr,conf_low,conf_high,p_value,se_type
+All products,Rurality,Q1 most rural vs Q5 most urban,rurality_quintile1,0.7881247674008559,0.4619149877247941,1.3447077178641464,0.3824068305115767,cluster_robust_state
+All products,SVI,Per 0.1 increase,svi_2022_per_0_1,0.8679163860275333,0.7842979334280974,0.9604498762894587,0.006130310037401508,cluster_robust_state
+All products,Medicaid expansion,Active vs not active,medicaid_expansion_active,1.7105655511262974,1.3656177290562355,2.1426453702546513,2.9853580543027164e-6,cluster_robust_state
+All products,CVD physician density,Per 1 CVD physician per 100k,cvd_physicians_per_100k_2023,0.9915755485297187,0.9562736338962559,1.0281806729690515,0.6473708040420935,cluster_robust_state
+Single-agent SGLT2 inhibitors,Rurality,Q1 most rural vs Q5 most urban,rurality_quintile1,0.8080447634514534,0.4750523116174558,1.3744514525530902,0.43161077421572763,cluster_robust_state
+Single-agent SGLT2 inhibitors,SVI,Per 0.1 increase,svi_2022_per_0_1,0.8627444984692031,0.7806362519862609,0.953488987662306,0.0038108301484746743,cluster_robust_state
+Single-agent SGLT2 inhibitors,Medicaid expansion,Active vs not active,medicaid_expansion_active,1.7213936448833838,1.3766824803666906,2.152417948876366,1.8983045165616864e-6,cluster_robust_state
+Single-agent SGLT2 inhibitors,CVD physician density,Per 1 CVD physician per 100k,cvd_physicians_per_100k_2023,0.9930835337073397,0.9582911528088172,1.029139110832854,0.7028762402579329,cluster_robust_state
+Empagliflozin/dapagliflozin,Rurality,Q1 most rural vs Q5 most urban,rurality_quintile1,0.7276288440653699,0.37592413573408484,1.4083792031124482,0.3453331825048047,cluster_robust_state
+Empagliflozin/dapagliflozin,SVI,Per 0.1 increase,svi_2022_per_0_1,0.8451844076684236,0.7583435482273864,0.9419697505643354,0.002359908097188854,cluster_robust_state
+Empagliflozin/dapagliflozin,Medicaid expansion,Active vs not active,medicaid_expansion_active,1.5794534138129017,1.2665488649907828,1.9696619335909982,4.955543222500111e-5,cluster_robust_state
+Empagliflozin/dapagliflozin,CVD physician density,Per 1 CVD physician per 100k,cvd_physicians_per_100k_2023,0.9736233219609994,0.9240570206722069,1.0258483533589624,0.31600061524522527,cluster_robust_state

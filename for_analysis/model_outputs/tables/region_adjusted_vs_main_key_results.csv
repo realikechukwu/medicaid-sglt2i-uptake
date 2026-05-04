@@ -1,0 +1,5 @@
+exposure,term,main_model_irr,main_model_ci,region_adjusted_model_irr,region_adjusted_model_ci,interpretation_change
+Rurality,rurality_quintile1,0.7881247674008559,0.788 (0.462-1.345),1.0170018374829706,1.017 (0.634-1.632),Region adjustment moved the point estimate upward.
+SVI,svi_2022_per_0_1,0.8679163860275333,0.868 (0.784-0.96),0.8976388584768256,0.898 (0.806-1),Little material change in point estimate.
+Medicaid expansion,medicaid_expansion_active,1.7105655511262974,1.711 (1.366-2.143),1.5296668740944352,1.53 (1.182-1.979),Region adjustment moved the point estimate downward.
+CVD physician density,cvd_physicians_per_100k_2023,0.9915755485297189,0.992 (0.956-1.028),1.004607853576376,1.005 (0.967-1.044),Little material change in point estimate.

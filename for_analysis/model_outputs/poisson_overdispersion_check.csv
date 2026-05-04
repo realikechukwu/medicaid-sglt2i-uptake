@@ -1,2 +1,0 @@
-model,n_observations,residual_deviance,residual_df,dispersion_ratio,warnings,error
-Poisson comparison: rurality + year + quarter,1938,3942801.2687646025,1921,2052.4733309550247,,NA

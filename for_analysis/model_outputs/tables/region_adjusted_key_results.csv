@@ -1,0 +1,11 @@
+exposure,comparison_or_unit,term,irr,conf_low,conf_high,p_value,se_type,interpretation
+Rurality,Q1 most rural vs Q5 most urban,rurality_quintile1,1.0170018374829706,0.6338890919262439,1.6316619904292087,0.9442750194620418,cluster_robust_state,Q5 most urban is the reference.
+Rurality,Q2 vs Q5 most urban,rurality_quintile2,1.0814014999800312,0.7307202980601034,1.6003787047706637,0.6955703346268411,cluster_robust_state,Q5 most urban is the reference.
+Rurality,Q3 vs Q5 most urban,rurality_quintile3,0.8387321988011516,0.6101878940029568,1.1528771845847299,0.2785793749064618,cluster_robust_state,Q5 most urban is the reference.
+Rurality,Q4 vs Q5 most urban,rurality_quintile4,0.8928404099564001,0.6401547600864789,1.2452676248840566,0.5042894695328447,cluster_robust_state,Q5 most urban is the reference.
+SVI,Per 0.1 increase,svi_2022_per_0_1,0.8976388584768256,0.8059920016567141,0.9997065958363736,0.04937482311873871,cluster_robust_state,IRR for each 0.1 higher SVI.
+Medicaid expansion,Active vs not active,medicaid_expansion_active,1.5296668740944352,1.182388336102088,1.9789443740756036,0.0012157401136606637,cluster_robust_state,IRR comparing active expansion state-quarters with non-active state-quarters.
+CVD physician density,Per 1 CVD physician per 100k,cvd_physicians_per_100k_2023,1.004607853576376,0.96674958690982,1.0439486637830617,0.8145404573512941,cluster_robust_state,"IRR for each additional CVD physician per 100,000 population."
+Census region,Midwest vs Northeast,census_regionMidwest,0.8627389158007639,0.64270536380902,1.1581021082908713,0.32567410137978153,cluster_robust_state,Northeast is the Census region reference.
+Census region,South vs Northeast,census_regionSouth,0.6261412021531692,0.4594568704661992,0.8532962074024703,0.0030308798772570927,cluster_robust_state,Northeast is the Census region reference.
+Census region,West vs Northeast,census_regionWest,0.9400701669251739,0.5879663665952545,1.5030314129363618,0.796318069172923,cluster_robust_state,Northeast is the Census region reference.
