@@ -1,0 +1,44 @@
+Model 2: SVI + time 
+Purpose: Estimate association per 0.1 increase in SVI.
+Formula: sglt2_prescriptions ~ svi_2022_per_0_1 + factor(year) + factor(quarter) +      offset(log_medicaid_enrolment)
+Data rows supplied: 1938
+Model warnings: None
+Cluster-robust SE status: succeeded
+
+
+Call:
+MASS::glm.nb(formula = spec$formula, data = spec$data, control = glm.control(maxit = 100), 
+    init.theta = 2.612528893, link = log)
+
+Coefficients:
+                  Estimate Std. Error  z value Pr(>|z|)    
+(Intercept)      -6.999097   0.066721 -104.901  < 2e-16 ***
+svi_2022_per_0_1 -0.045280   0.008619   -5.253 1.49e-07 ***
+factor(year)2016  0.607896   0.061425    9.897  < 2e-16 ***
+factor(year)2017  0.957790   0.061408   15.597  < 2e-16 ***
+factor(year)2018  1.166588   0.061401   19.000  < 2e-16 ***
+factor(year)2019  1.413194   0.061394   23.018  < 2e-16 ***
+factor(year)2021  1.999910   0.061380   32.582  < 2e-16 ***
+factor(year)2022  2.251042   0.061377   36.676  < 2e-16 ***
+factor(year)2023  2.498621   0.061375   40.711  < 2e-16 ***
+factor(year)2024  2.728788   0.061374   44.462  < 2e-16 ***
+factor(year)2025  2.885190   0.076505   37.713  < 2e-16 ***
+factor(quarter)2  0.123886   0.038785    3.194   0.0014 ** 
+factor(quarter)3  0.207699   0.040370    5.145 2.68e-07 ***
+factor(quarter)4  0.268006   0.040369    6.639 3.16e-11 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for Negative Binomial(2.6125) family taken to be 1)
+
+    Null deviance: 5646.9  on 1937  degrees of freedom
+Residual deviance: 2081.1  on 1924  degrees of freedom
+AIC: 34891
+
+Number of Fisher Scoring iterations: 1
+
+
+              Theta:  2.6125 
+          Std. Err.:  0.0800 
+
+ 2 x log-likelihood:  -34861.2680 

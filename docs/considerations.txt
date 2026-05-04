@@ -1,0 +1,357 @@
+Your findings are promising, especially the consistent SVI signal, but reviewers will push hard on whether the analysis is really measuring access inequity or whether it is picking up artefacts of Medicaid data, state policy, coding, denominator choice, and ecological confounding.
+
+Here is the strongest critique against your current findings.
+
+The biggest reviewer attack
+
+Your main finding is that higher SVI is associated with lower SGLT2 prescribing. A reviewer may say:
+
+“This is an ecological state-level analysis. You cannot conclude that socially vulnerable Medicaid beneficiaries had lower uptake. You only show that states with higher aggregate SVI had lower state-level Medicaid SGLT2 prescribing.”
+
+That is fair. Your unit is state-quarter, not patient. So you must avoid patient-level language.
+
+Use:
+
+“states with higher social vulnerability had lower Medicaid SGLT2 prescribing rates”
+
+Not:
+
+“socially vulnerable patients were less likely to receive SGLT2 inhibitors.”
+
+1. The Medicaid denominator may not represent the eligible population
+
+Your denominator is total Medicaid enrolment, but SGLT2 inhibitors are only relevant to people with diabetes, CKD, and/or HF. States differ in the proportion of Medicaid beneficiaries who have those conditions.
+
+A reviewer may ask:
+
+“Why are you dividing by all Medicaid beneficiaries rather than disease-eligible Medicaid beneficiaries?”
+
+Your response is that disease-specific Medicaid denominators are not readily available nationally at state-quarter level, so total Medicaid enrolment measures population-level Medicaid uptake, not patient-level treatment rate among eligible patients.
+
+You need to phrase the outcome carefully:
+
+“Medicaid SGLT2 prescriptions per 10,000 Medicaid beneficiaries”
+
+not:
+
+“SGLT2 treatment rate among eligible patients.”
+
+2. Prescriptions are not unique patients
+
+SDUD gives prescription counts, not number of people treated. One patient can contribute multiple prescriptions in a quarter.
+
+Reviewers may say:
+
+“Higher prescribing could reflect refill frequency, days’ supply, or pharmacy billing behaviour rather than more patients receiving therapy.”
+
+You should explicitly state:
+
+“The outcome reflects prescription claims volume, not unique treated beneficiaries.”
+
+Your units outcome can partly support consistency, but it still does not solve unique patient count.
+
+3. Medicaid expansion effect may be confounded
+
+The Medicaid expansion result is strong, but reviewers will be cautious. Expansion states differ from non-expansion states in many ways:
+
+politics
+Medicaid generosity
+formulary restrictions
+urbanisation
+state wealth
+health system capacity
+managed care penetration
+prescribing culture
+
+So do not frame it as causal.
+
+Avoid:
+
+“Medicaid expansion increased SGLT2 prescribing.”
+
+Use:
+
+“Medicaid expansion status was associated with higher SGLT2 prescribing.”
+
+If you want to make a causal claim, you would need a stronger design, such as difference-in-differences around expansion dates. For this paper, keep it associative.
+
+4. Your disease burden covariates are Medicare FFS, not Medicaid
+
+You used CMS Mapping Medicare Disparities disease burden variables for Medicare FFS beneficiaries. This is internally consistent, but it is not the Medicaid population.
+
+A reviewer may ask:
+
+“Why are Medicare HF/IHD, diabetes, and CKD prevalence being used to adjust Medicaid prescribing?”
+
+Your defence:
+
+“These were used as state-level proxies for underlying cardiometabolic disease burden, not as Medicaid-specific disease prevalence.”
+
+But this must be in the limitations. Also be careful with the HF variable. It is HF/IHD, not pure HF prevalence.
+
+5. Time-invariant covariates across 2015–2025
+
+You are applying 2022/2023 structural covariates to a 2015–2025 outcome period.
+
+Reviewers may challenge:
+
+“How can 2023 physician density or 2022 SVI explain prescribing in 2015?”
+
+Your answer:
+
+“These covariates were treated as structural state-level characteristics, not year-specific exposures.”
+
+This is reasonable, but you should do at least one sensitivity analysis if possible:
+
+restrict to 2021–2025 only
+or 2022–2025 only
+
+If the SVI association remains, that strengthens the paper because the covariate timing aligns better with the outcome period.
+
+6. Rurality may be underpowered or mismeasured
+
+Your rurality quintile result is directionally lower but not statistically significant. Reviewers may say:
+
+“The study title emphasises rurality, but rurality was not significant.”
+
+This is important. Your title currently says:
+
+“Rurality, Deprivation, and Medicaid Uptake…”
+
+That is still acceptable, but the abstract must be honest that SVI was the stronger finding.
+
+You may consider a title shift:
+
+“Social Vulnerability, Rurality, and Medicaid Uptake…”
+
+or
+
+“State-Level Social Vulnerability and Medicaid Uptake…”
+
+If rurality remains non-significant in continuous and categorical models, do not oversell it. The story may be:
+
+“Social vulnerability, rather than rurality alone, was consistently associated with lower uptake.”
+
+That is a stronger and more honest paper.
+
+7. State-level SVI may mask within-state inequality
+
+SVI is usually more powerful at county or tract level. Aggregating it to state-level loses a lot of variation.
+
+A reviewer may say:
+
+“State-level SVI is too crude and may obscure within-state deprivation.”
+
+That is true. But your study is state-level because SDUD is state-level. You can say:
+
+“Because SDUD is state-level, covariates were aggregated to state-level. This limits inference about within-state disparities.”
+
+Do not pretend you are measuring neighbourhood deprivation.
+
+8. Correlation between SVI, rurality, expansion, and region
+
+SVI, rurality, Medicaid expansion, and region may be correlated. This can produce unstable estimates or make interpretation difficult.
+
+Before publication, check:
+
+correlation between SVI and nonmetro population share
+SVI by rurality quintile
+SVI by Medicaid expansion status
+rurality by Medicaid expansion status
+disease burden by SVI
+
+If SVI is highly correlated with non-expansion status or Southern region, reviewers may ask whether SVI is just a proxy for those.
+
+If you do not have Census region in the model yet, add it if possible. It is a simple and defensible adjustment.
+
+9. You need to check state fixed effects issue
+
+If you include state fixed effects, time-invariant variables like SVI and rurality cannot be estimated because they do not vary within state. That is why your current model uses repeated state-quarter data with time effects, not state fixed effects.
+
+A reviewer may ask:
+
+“Why not use state fixed effects?”
+
+Your answer:
+
+“The primary exposures were time-invariant state-level characteristics, so state fixed effects would absorb them. We used time fixed effects and cluster-robust standard errors by state.”
+
+You could consider a sensitivity model with random intercepts for state, but do not let this derail the paper.
+
+10. Cluster-robust SE with only 51 clusters
+
+You have 51 state/DC clusters. That is usually acceptable, but not huge. Reviewers may ask about repeated observations.
+
+You already used state-clustered robust SEs, which is good. Mention it clearly:
+
+“Standard errors were clustered by state to account for repeated quarterly observations.”
+
+If possible, check that ordinary and robust SEs lead to similar conclusions.
+
+11. Managed care vs fee-for-service
+
+You combined FFSU and MCOU, which is appropriate for total Medicaid utilisation. But states vary in Medicaid managed care penetration.
+
+Reviewer concern:
+
+“MCO reporting completeness and managed care structures vary by state.”
+
+This is a real limitation. You should check at least a descriptive split:
+
+FFSU-only trends
+MCOU-only trends
+combined FFSU + MCOU
+
+You do not need to make this central, but it is worth knowing whether one state’s pattern is driven by MCO reporting.
+
+12. NDC lookup completeness
+
+Reviewers may ask:
+
+“How do you know you captured all SGLT2 inhibitors and combinations?”
+
+Before submission, validate your NDC lookup:
+
+number of NDCs by drug
+brands included
+single-agent vs combination flag
+start/end marketing dates
+any duplicate NDCs
+whether sotagliflozin/bexagliflozin appear meaningfully
+
+Have a supplementary table listing included drugs and combination products.
+
+Also state that fixed-dose combinations were included in primary analysis and tested using single-agent-only sensitivity analysis.
+
+13. 2020 exclusion
+
+Excluding 2020 is reasonable because your file only had Q4, but reviewers may ask why 2020 is missing and whether COVID-era disruptions matter.
+
+You should write:
+
+“The year 2020 was excluded because the available SDUD source contained only Q4, precluding complete quarterly ascertainment.”
+
+Do a sensitivity analysis through 2024 only, which you planned, and maybe one excluding 2025 partial data.
+
+14. 2025 partial data
+
+Your master file has 2025 Q1–Q2 only. That is okay for quarterly modelling, but it must be clear.
+
+Reviewers may ask:
+
+“Why include partial 2025?”
+
+You can say:
+
+“Because the unit of analysis was state-quarter, complete annual data were not required; however, sensitivity analyses restricted to complete years through 2024 were performed.”
+
+Good.
+
+15. Prior authorisation/formulary policy is missing
+
+This is a major unmeasured confounder. SGLT2 uptake depends heavily on state Medicaid preferred drug lists and prior authorisation.
+
+A reviewer may say:
+
+“The analysis does not account for state Medicaid formulary restrictions.”
+
+You likely cannot fix this quickly, but you should mention it. If you can collect a simple current formulary restriction variable later, that would strengthen the paper, but it is not necessary for abstract stage.
+
+What I would check before publishing
+
+Here is the practical checklist.
+
+Data integrity checks
+
+Check that:
+
+each state-quarter appears once
+50 states + DC only
+2020 absent
+PR and XX absent
+2025 only Q1–Q2 if expected
+no missing enrolment
+zero-fill only applied to missing SGLT2 outcomes, not covariates
+rates recalculate correctly from prescriptions/enrolment
+
+Outcome validation
+
+Check:
+
+national prescriptions by quarter over time
+top/bottom states by prescribing rate
+outlier states
+units per prescription distribution
+reimbursement per prescription distribution
+
+If one state has impossible rates, investigate.
+
+NDC validation
+
+Check:
+
+included SGLT2 drugs
+single-agent vs combination products
+number of NDCs by year
+sudden NDC changes
+duplicates in lookup
+
+Covariate validation
+
+Check:
+
+rurality quintile membership makes sense
+SVI values make sense
+Medicaid expansion dates are correct
+physician density values are plausible
+disease burden values are percentages, not proportions
+
+Model validation
+
+Check:
+
+Poisson overdispersion supports negative binomial
+models converge
+cluster-robust SEs work
+ordinary vs robust conclusions
+continuous rurality sensitivity
+through-2024 sensitivity
+single-agent and empa/dapa sensitivity
+
+Additional model I would strongly consider
+
+Add Census region if not already included.
+
+Your SVI signal may partly reflect regional clustering, especially Southern states. A region-adjusted model will be important for reviewers.
+
+If SVI remains significant after region adjustment, your paper becomes stronger.
+
+Possible reframing based on results
+
+Your current title puts rurality first, but the strongest result is SVI. Consider changing emphasis.
+
+Current:
+
+State-Level Rurality, Deprivation, and Medicaid Uptake…
+
+Potentially stronger:
+
+State-Level Social Vulnerability, Rurality, and Medicaid Uptake of SGLT2 Inhibitors…
+
+Or:
+
+Social Vulnerability and Medicaid Uptake of SGLT2 Inhibitors Across U.S. States…
+
+Then rurality becomes a key secondary exposure rather than the headline if it remains non-significant.
+
+How to write the conclusion cautiously
+
+Do not write:
+
+“Rural and deprived patients had poor access to SGLT2 inhibitors.”
+
+Write:
+
+“In this state-level Medicaid analysis, higher social vulnerability was consistently associated with lower SGLT2 inhibitor prescribing rates, while rurality showed directionally lower but imprecise associations. Medicaid expansion status was associated with substantially higher prescribing. These findings suggest state-level inequities in uptake of guideline-directed cardiometabolic therapies, warranting further patient-level and policy-focused investigation.”
+
+That is defensible.

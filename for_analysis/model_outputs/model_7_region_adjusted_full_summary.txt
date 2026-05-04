@@ -1,0 +1,56 @@
+Model 7: Region-adjusted full model 
+Purpose: Region-adjusted planned full model.
+Formula: sglt2_prescriptions ~ rurality_quintile + svi_2022_per_0_1 +      medicaid_expansion_active + census_region + cvd_physicians_per_100k_2023 +      medicare_ffs_hf_ihd_prevalence_2023 + medicare_ffs_diabetes_prevalence_2023 +      medicare_ffs_ckd_prevalence_2023 + factor(year) + factor(quarter) +      offset(log_medicaid_enrolment)
+Data rows supplied: 1938
+Model warnings: None
+Cluster-robust SE status: succeeded
+
+
+Call:
+MASS::glm.nb(formula = spec$formula, data = spec$data, control = glm.control(maxit = 100), 
+    init.theta = 3.746615483, link = log)
+
+Coefficients:
+                                       Estimate Std. Error z value Pr(>|z|)    
+(Intercept)                           -9.899996   0.213184 -46.439  < 2e-16 ***
+rurality_quintile4                    -0.113347   0.050138  -2.261 0.023777 *  
+rurality_quintile3                    -0.175864   0.050506  -3.482 0.000498 ***
+rurality_quintile2                     0.078258   0.055110   1.420 0.155596    
+rurality_quintile1                     0.016859   0.062914   0.268 0.788723    
+svi_2022_per_0_1                      -0.107987   0.012336  -8.754  < 2e-16 ***
+medicaid_expansion_active              0.425050   0.030159  14.093  < 2e-16 ***
+census_regionMidwest                  -0.147643   0.047621  -3.100 0.001933 ** 
+census_regionSouth                    -0.468179   0.048740  -9.606  < 2e-16 ***
+census_regionWest                     -0.061801   0.059584  -1.037 0.299643    
+cvd_physicians_per_100k_2023           0.004597   0.007412   0.620 0.535082    
+medicare_ffs_hf_ihd_prevalence_2023    0.037331   0.011622   3.212 0.001318 ** 
+medicare_ffs_diabetes_prevalence_2023  0.082989   0.006625  12.527  < 2e-16 ***
+medicare_ffs_ckd_prevalence_2023       0.037218   0.006973   5.338 9.41e-08 ***
+factor(year)2016                       0.554166   0.051429  10.775  < 2e-16 ***
+factor(year)2017                       0.905988   0.051412  17.622  < 2e-16 ***
+factor(year)2018                       1.126090   0.051400  21.908  < 2e-16 ***
+factor(year)2019                       1.378563   0.051433  26.803  < 2e-16 ***
+factor(year)2021                       1.948252   0.051590  37.764  < 2e-16 ***
+factor(year)2022                       2.196428   0.051662  42.515  < 2e-16 ***
+factor(year)2023                       2.444738   0.051693  47.293  < 2e-16 ***
+factor(year)2024                       2.669894   0.051804  51.538  < 2e-16 ***
+factor(year)2025                       2.826085   0.064354  43.915  < 2e-16 ***
+factor(quarter)2                       0.120943   0.032416   3.731 0.000191 ***
+factor(quarter)3                       0.204034   0.033743   6.047 1.48e-09 ***
+factor(quarter)4                       0.258355   0.033743   7.657 1.91e-14 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for Negative Binomial(3.7466) family taken to be 1)
+
+    Null deviance: 8076.1  on 1937  degrees of freedom
+Residual deviance: 2057.1  on 1912  degrees of freedom
+AIC: 34161
+
+Number of Fisher Scoring iterations: 1
+
+
+              Theta:  3.747 
+          Std. Err.:  0.117 
+
+ 2 x log-likelihood:  -34106.575 

@@ -31,13 +31,45 @@ rate_files <- tribble(
   )
 )
 
+require_columns <- function(data, required, data_label) {
+  missing <- setdiff(required, names(data))
+
+  if (length(missing) > 0) {
+    message("Available columns in ", data_label, ":")
+    print(names(data))
+    stop(
+      data_label,
+      " is missing required column(s): ",
+      paste(missing, collapse = ", "),
+      call. = FALSE
+    )
+  }
+
+  invisible(data)
+}
+
 read_rate_file <- function(definition, file_path) {
   if (!file.exists(file_path)) {
     stop("Missing input file: ", file_path)
   }
 
-  read_csv(file_path, show_col_types = FALSE) %>%
-    clean_names() %>%
+  rates <- read_csv(file_path, show_col_types = FALSE) %>%
+    clean_names()
+
+  require_columns(
+    rates,
+    c(
+      "state",
+      "year",
+      "quarter",
+      "sglt2_prescriptions",
+      "sglt2_prescriptions_per_10000",
+      "medicaid_enrolment_quarter_avg"
+    ),
+    basename(file_path)
+  )
+
+  rates %>%
     mutate(
       definition = definition,
       state = as.character(state),
@@ -47,7 +79,7 @@ read_rate_file <- function(definition, file_path) {
       year_quarter = paste0(year, " Q", quarter),
       sglt2_prescriptions_per_10000 = as.numeric(sglt2_prescriptions_per_10000),
       sglt2_prescriptions = as.numeric(sglt2_prescriptions),
-      medicaid_enrolment = as.numeric(medicaid_enrolment)
+      medicaid_enrolment_quarter_avg = as.numeric(medicaid_enrolment_quarter_avg)
     )
 }
 
@@ -61,7 +93,7 @@ if (any(rates$state %in% c("PR", "XX"))) {
   stop("PR or XX is present in the plotting data.")
 }
 
-if (any(is.na(rates$medicaid_enrolment))) {
+if (any(is.na(rates$medicaid_enrolment_quarter_avg))) {
   stop("Missing Medicaid enrolment in plotting data.")
 }
 
@@ -190,7 +222,7 @@ national_definition_trends <- rates %>%
   group_by(definition, year, quarter, quarter_date, year_quarter) %>%
   summarise(
     total_prescriptions = sum(sglt2_prescriptions, na.rm = TRUE),
-    total_medicaid_enrolment = sum(medicaid_enrolment, na.rm = TRUE),
+    total_medicaid_enrolment = sum(medicaid_enrolment_quarter_avg, na.rm = TRUE),
     prescriptions_per_10000 = total_prescriptions / total_medicaid_enrolment * 10000,
     .groups = "drop"
   )

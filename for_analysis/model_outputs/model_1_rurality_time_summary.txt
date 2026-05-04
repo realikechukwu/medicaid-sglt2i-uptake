@@ -1,0 +1,47 @@
+Model 1: Rurality + time 
+Purpose: Estimate temporally adjusted association between rurality quintile and prescribing.
+Formula: sglt2_prescriptions ~ rurality_quintile + factor(year) + factor(quarter) +      offset(log_medicaid_enrolment)
+Data rows supplied: 1938
+Model warnings: None
+Cluster-robust SE status: succeeded
+
+
+Call:
+MASS::glm.nb(formula = spec$formula, data = spec$data, control = glm.control(maxit = 100), 
+    init.theta = 2.656451845, link = log)
+
+Coefficients:
+                   Estimate Std. Error  z value Pr(>|z|)    
+(Intercept)        -7.07892    0.05684 -124.541  < 2e-16 ***
+rurality_quintile4 -0.34566    0.04453   -7.762 8.39e-15 ***
+rurality_quintile3 -0.15285    0.04453   -3.432 0.000598 ***
+rurality_quintile2 -0.15356    0.04455   -3.446 0.000568 ***
+rurality_quintile1 -0.14022    0.04355   -3.220 0.001283 ** 
+factor(year)2016    0.59330    0.06092    9.738  < 2e-16 ***
+factor(year)2017    0.94439    0.06091   15.505  < 2e-16 ***
+factor(year)2018    1.15769    0.06090   19.010  < 2e-16 ***
+factor(year)2019    1.41182    0.06089   23.186  < 2e-16 ***
+factor(year)2021    2.00631    0.06088   32.957  < 2e-16 ***
+factor(year)2022    2.26014    0.06087   37.129  < 2e-16 ***
+factor(year)2023    2.50869    0.06087   41.213  < 2e-16 ***
+factor(year)2024    2.74097    0.06087   45.029  < 2e-16 ***
+factor(year)2025    2.89958    0.07587   38.215  < 2e-16 ***
+factor(quarter)2    0.12533    0.03847    3.258 0.001121 ** 
+factor(quarter)3    0.20743    0.04004    5.181 2.21e-07 ***
+factor(quarter)4    0.26832    0.04004    6.702 2.06e-11 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for Negative Binomial(2.6565) family taken to be 1)
+
+    Null deviance: 5741.2  on 1937  degrees of freedom
+Residual deviance: 2079.6  on 1921  degrees of freedom
+AIC: 34862
+
+Number of Fisher Scoring iterations: 1
+
+
+              Theta:  2.6565 
+          Std. Err.:  0.0815 
+
+ 2 x log-likelihood:  -34825.6960 

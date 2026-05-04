@@ -1,0 +1,5 @@
+exposure,original_full_model_irr,original_full_model_ci,region_adjusted_model_irr,region_adjusted_model_ci,interpretation_change
+Q1 most rural vs Q5 most urban,0.7881247674008539,0.788 (0.462-1.345),1.0170018374829728,1.017 (0.634-1.632),Region adjustment moved the point estimate upward.
+SVI per 0.1 increase,0.8679163860275333,0.868 (0.784-0.96),0.8976388584768259,0.898 (0.806-1),Little material change in point estimate.
+Medicaid expansion active,1.7105655511262954,1.711 (1.366-2.143),1.529666874094436,1.53 (1.182-1.979),Region adjustment moved the point estimate downward.
+CVD physicians per 100k,0.9915755485297186,0.992 (0.956-1.028),1.0046078535763758,1.005 (0.967-1.044),Little material change in point estimate.

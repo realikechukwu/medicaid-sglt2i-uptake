@@ -1,0 +1,48 @@
+Model 3: Rurality + SVI + time 
+Purpose: Assess whether rurality association persists after accounting for SVI, and vice versa.
+Formula: sglt2_prescriptions ~ rurality_quintile + svi_2022_per_0_1 +      factor(year) + factor(quarter) + offset(log_medicaid_enrolment)
+Data rows supplied: 1938
+Model warnings: None
+Cluster-robust SE status: succeeded
+
+
+Call:
+MASS::glm.nb(formula = spec$formula, data = spec$data, control = glm.control(maxit = 100), 
+    init.theta = 2.704902569, link = log)
+
+Coefficients:
+                    Estimate Std. Error z value Pr(>|z|)    
+(Intercept)        -6.703411   0.080020 -83.772  < 2e-16 ***
+rurality_quintile4 -0.374415   0.044548  -8.405  < 2e-16 ***
+rurality_quintile3 -0.197726   0.044513  -4.442 8.91e-06 ***
+rurality_quintile2 -0.246540   0.045686  -5.396 6.80e-08 ***
+rurality_quintile1 -0.260767   0.047053  -5.542 2.99e-08 ***
+svi_2022_per_0_1   -0.063109   0.009343  -6.754 1.43e-11 ***
+factor(year)2016    0.599819   0.060376   9.935  < 2e-16 ***
+factor(year)2017    0.954677   0.060358  15.817  < 2e-16 ***
+factor(year)2018    1.168216   0.060351  19.357  < 2e-16 ***
+factor(year)2019    1.418536   0.060344  23.508  < 2e-16 ***
+factor(year)2021    2.008542   0.060329  33.293  < 2e-16 ***
+factor(year)2022    2.261052   0.060326  37.481  < 2e-16 ***
+factor(year)2023    2.509631   0.060324  41.603  < 2e-16 ***
+factor(year)2024    2.742743   0.060323  45.468  < 2e-16 ***
+factor(year)2025    2.901421   0.075192  38.587  < 2e-16 ***
+factor(quarter)2    0.125216   0.038119   3.285  0.00102 ** 
+factor(quarter)3    0.208324   0.039677   5.250 1.52e-07 ***
+factor(quarter)4    0.269005   0.039676   6.780 1.20e-11 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for Negative Binomial(2.7049) family taken to be 1)
+
+    Null deviance: 5845.1  on 1937  degrees of freedom
+Residual deviance: 2078.3  on 1920  degrees of freedom
+AIC: 34825
+
+Number of Fisher Scoring iterations: 1
+
+
+              Theta:  2.7049 
+          Std. Err.:  0.0830 
+
+ 2 x log-likelihood:  -34787.4140 
