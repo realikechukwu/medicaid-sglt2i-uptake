@@ -16,6 +16,7 @@ Date: 2026-05-04
 - Updated `README.md`.
 - Created `docs/data_dictionary/data_dictionary.md`.
 - Created this cleanup summary and the file move plan under `docs/logs/`.
+- Follow-up cleanup: moved duplicate `* 2.R` scripts to `archive/duplicate_files/scripts_exact_duplicates/` and leftover exploratory/POC scripts to `archive/old_scripts/scripts_leftover_after_cleanup/`.
 
 ## Final Structure
 
@@ -65,6 +66,7 @@ archive/
 - Final analysis tables, diagnostics, and figures moved into `for_analysis/model_outputs/` subfolders.
 - Protocol, methods, audit, and modelling logs moved into `docs/` subfolders.
 - 123 files are currently preserved under `archive/`.
+- Additional duplicate and leftover scripts were archived after verifying `scripts/` should contain only the final numbered pipeline plus `run_all.R`.
 
 ## Files Kept
 
