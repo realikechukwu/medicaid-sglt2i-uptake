@@ -2,6 +2,7 @@ cff-version: 1.2.0
 message: "If you use this code, please cite the associated article."
 title: "Medicaid SGLT2 inhibitor uptake: analysis code"
 type: software
+doi: "10.5281/zenodo.23548149"
 authors:
   - family-names: Chukwudi
     given-names: Ikechukwu Roland

@@ -1,5 +1,7 @@
 # Medicaid SGLT2 Inhibitor Uptake: Social Vulnerability, Rurality and State Policy
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23548149.svg)](https://doi.org/10.5281/zenodo.23548149)
+
 Analysis code and outputs for the manuscript:
 
 > Chukwudi IR, Nnamani E, Akpabio NC, Shaka H. **Unequal Diffusion of SGLT2 Inhibitors in Medicaid: The Role of Social Vulnerability and State Policy.**
@@ -130,4 +132,4 @@ scripts/             Numbered pipeline scripts and run_all.R
 
 ## Citation and licence
 
-Please cite the article above when using this code. Citation metadata is in [`CITATION.cff`](CITATION.cff). The code is released under the [MIT licence](LICENSE). The data remain subject to the terms of their original public sources.
+Please cite the article above when using this code. The code is archived on Zenodo: version 1.0.0, which produced the reported results, is [10.5281/zenodo.23548150](https://doi.org/10.5281/zenodo.23548150), and all versions are at [10.5281/zenodo.23548149](https://doi.org/10.5281/zenodo.23548149). Citation metadata is in [`CITATION.cff`](CITATION.cff). The code is released under the [MIT licence](LICENSE). The data remain subject to the terms of their original public sources.
