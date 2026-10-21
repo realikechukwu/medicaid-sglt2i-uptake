@@ -349,3 +349,208 @@ Region-adjusted sensitivity outcome key results:
 29 Northeast is the Census region reference.                                    
 30 Northeast is the Census region reference.                                    
 ```
+
+## Sequential Adjustment Series
+
+- Models 1-5 fitted in `scripts/09_model_sequential_series.R`; Model 6 is the primary model (script 06) and Model 7 the region-adjusted model (script 08).
+- All models: negative binomial, log mean monthly Medicaid enrolment offset, categorical year and quarter, state-clustered robust standard errors.
+- Output: `for_analysis/model_outputs/tables/sequential_models_key_results.csv` and `sequential_models_cluster_robust_coefficients.csv`.
+
+```
+# A tibble: 37 × 11
+   model_id model_label              
+   <chr>    <chr>                    
+ 1 model_1  Model 1                  
+ 2 model_1  Model 1                  
+ 3 model_1  Model 1                  
+ 4 model_1  Model 1                  
+ 5 model_2  Model 2                  
+ 6 model_3  Model 3                  
+ 7 model_3  Model 3                  
+ 8 model_3  Model 3                  
+ 9 model_3  Model 3                  
+10 model_3  Model 3                  
+11 model_4  Model 4                  
+12 model_4  Model 4                  
+13 model_4  Model 4                  
+14 model_4  Model 4                  
+15 model_4  Model 4                  
+16 model_4  Model 4                  
+17 model_5  Model 5                  
+18 model_5  Model 5                  
+19 model_5  Model 5                  
+20 model_5  Model 5                  
+21 model_5  Model 5                  
+22 model_5  Model 5                  
+23 model_5  Model 5                  
+24 model_6  Model 6 (primary)        
+25 model_6  Model 6 (primary)        
+26 model_6  Model 6 (primary)        
+27 model_6  Model 6 (primary)        
+28 model_6  Model 6 (primary)        
+29 model_6  Model 6 (primary)        
+30 model_6  Model 6 (primary)        
+31 model_7  Model 7 (region-adjusted)
+32 model_7  Model 7 (region-adjusted)
+33 model_7  Model 7 (region-adjusted)
+34 model_7  Model 7 (region-adjusted)
+35 model_7  Model 7 (region-adjusted)
+36 model_7  Model 7 (region-adjusted)
+37 model_7  Model 7 (region-adjusted)
+   adjustment_set                                            
+   <chr>                                                     
+ 1 Rurality + time                                           
+ 2 Rurality + time                                           
+ 3 Rurality + time                                           
+ 4 Rurality + time                                           
+ 5 SVI + time                                                
+ 6 Rurality + SVI + time                                     
+ 7 Rurality + SVI + time                                     
+ 8 Rurality + SVI + time                                     
+ 9 Rurality + SVI + time                                     
+10 Rurality + SVI + time                                     
+11 Model 3 + Medicaid expansion                              
+12 Model 3 + Medicaid expansion                              
+13 Model 3 + Medicaid expansion                              
+14 Model 3 + Medicaid expansion                              
+15 Model 3 + Medicaid expansion                              
+16 Model 3 + Medicaid expansion                              
+17 Model 4 + CVD physician density                           
+18 Model 4 + CVD physician density                           
+19 Model 4 + CVD physician density                           
+20 Model 4 + CVD physician density                           
+21 Model 4 + CVD physician density                           
+22 Model 4 + CVD physician density                           
+23 Model 4 + CVD physician density                           
+24 Model 5 + Medicare FFS HF/IHD, diabetes and CKD prevalence
+25 Model 5 + Medicare FFS HF/IHD, diabetes and CKD prevalence
+26 Model 5 + Medicare FFS HF/IHD, diabetes and CKD prevalence
+27 Model 5 + Medicare FFS HF/IHD, diabetes and CKD prevalence
+28 Model 5 + Medicare FFS HF/IHD, diabetes and CKD prevalence
+29 Model 5 + Medicare FFS HF/IHD, diabetes and CKD prevalence
+30 Model 5 + Medicare FFS HF/IHD, diabetes and CKD prevalence
+31 Model 6 + Census region                                   
+32 Model 6 + Census region                                   
+33 Model 6 + Census region                                   
+34 Model 6 + Census region                                   
+35 Model 6 + Census region                                   
+36 Model 6 + Census region                                   
+37 Model 6 + Census region                                   
+   exposure              comparison_or_unit            
+   <chr>                 <chr>                         
+ 1 Rurality              Q1 most rural vs Q5 most urban
+ 2 Rurality              Q2 vs Q5 most urban           
+ 3 Rurality              Q3 vs Q5 most urban           
+ 4 Rurality              Q4 vs Q5 most urban           
+ 5 SVI                   Per 0.1 increase              
+ 6 Rurality              Q1 most rural vs Q5 most urban
+ 7 Rurality              Q2 vs Q5 most urban           
+ 8 Rurality              Q3 vs Q5 most urban           
+ 9 Rurality              Q4 vs Q5 most urban           
+10 SVI                   Per 0.1 increase              
+11 Rurality              Q1 most rural vs Q5 most urban
+12 Rurality              Q2 vs Q5 most urban           
+13 Rurality              Q3 vs Q5 most urban           
+14 Rurality              Q4 vs Q5 most urban           
+15 SVI                   Per 0.1 increase              
+16 Medicaid expansion    Active vs not active          
+17 Rurality              Q1 most rural vs Q5 most urban
+18 Rurality              Q2 vs Q5 most urban           
+19 Rurality              Q3 vs Q5 most urban           
+20 Rurality              Q4 vs Q5 most urban           
+21 SVI                   Per 0.1 increase              
+22 Medicaid expansion    Active vs not active          
+23 CVD physician density Per 1 CVD physician per 100k  
+24 Rurality              Q1 most rural vs Q5 most urban
+25 Rurality              Q2 vs Q5 most urban           
+26 Rurality              Q3 vs Q5 most urban           
+27 Rurality              Q4 vs Q5 most urban           
+28 SVI                   Per 0.1 increase              
+29 Medicaid expansion    Active vs not active          
+30 CVD physician density Per 1 CVD physician per 100k  
+31 Rurality              Q1 most rural vs Q5 most urban
+32 Rurality              Q2 vs Q5 most urban           
+33 Rurality              Q3 vs Q5 most urban           
+34 Rurality              Q4 vs Q5 most urban           
+35 SVI                   Per 0.1 increase              
+36 Medicaid expansion    Active vs not active          
+37 CVD physician density Per 1 CVD physician per 100k  
+   term                           irr conf_low conf_high    p_value
+   <chr>                        <dbl>    <dbl>     <dbl>      <dbl>
+ 1 rurality_quintile1           0.869    0.538     1.40  0.566     
+ 2 rurality_quintile2           0.858    0.568     1.30  0.465     
+ 3 rurality_quintile3           0.858    0.571     1.29  0.462     
+ 4 rurality_quintile4           0.708    0.469     1.07  0.0988    
+ 5 svi_2022_per_0_1             0.956    0.893     1.02  0.194     
+ 6 rurality_quintile1           0.770    0.434     1.37  0.373     
+ 7 rurality_quintile2           0.782    0.500     1.22  0.280     
+ 8 rurality_quintile3           0.821    0.551     1.22  0.330     
+ 9 rurality_quintile4           0.688    0.444     1.06  0.0929    
+10 svi_2022_per_0_1             0.939    0.857     1.03  0.173     
+11 rurality_quintile1           0.880    0.520     1.49  0.633     
+12 rurality_quintile2           0.978    0.630     1.52  0.922     
+13 rurality_quintile3           0.942    0.671     1.32  0.731     
+14 rurality_quintile4           0.753    0.516     1.10  0.143     
+15 svi_2022_per_0_1             0.957    0.875     1.05  0.340     
+16 medicaid_expansion_active    1.65     1.28      2.13  0.000111  
+17 rurality_quintile1           0.982    0.540     1.78  0.953     
+18 rurality_quintile2           1.08     0.657     1.78  0.761     
+19 rurality_quintile3           1.02     0.703     1.48  0.916     
+20 rurality_quintile4           0.826    0.539     1.26  0.379     
+21 svi_2022_per_0_1             0.964    0.879     1.06  0.440     
+22 medicaid_expansion_active    1.64     1.28      2.10  0.0000900 
+23 cvd_physicians_per_100k_2023 1.02     0.968     1.08  0.458     
+24 rurality_quintile1           0.788    0.462     1.34  0.382     
+25 rurality_quintile2           0.922    0.603     1.41  0.708     
+26 rurality_quintile3           0.720    0.502     1.03  0.0746    
+27 rurality_quintile4           0.776    0.520     1.16  0.214     
+28 svi_2022_per_0_1             0.868    0.784     0.960 0.00613   
+29 medicaid_expansion_active    1.71     1.37      2.14  0.00000299
+30 cvd_physicians_per_100k_2023 0.992    0.956     1.03  0.647     
+31 rurality_quintile1           1.02     0.634     1.63  0.944     
+32 rurality_quintile2           1.08     0.731     1.60  0.696     
+33 rurality_quintile3           0.839    0.610     1.15  0.279     
+34 rurality_quintile4           0.893    0.640     1.25  0.504     
+35 svi_2022_per_0_1             0.898    0.806     1.00  0.0494    
+36 medicaid_expansion_active    1.53     1.18      1.98  0.00122   
+37 cvd_physicians_per_100k_2023 1.00     0.967     1.04  0.815     
+   se_type             
+   <chr>               
+ 1 cluster_robust_state
+ 2 cluster_robust_state
+ 3 cluster_robust_state
+ 4 cluster_robust_state
+ 5 cluster_robust_state
+ 6 cluster_robust_state
+ 7 cluster_robust_state
+ 8 cluster_robust_state
+ 9 cluster_robust_state
+10 cluster_robust_state
+11 cluster_robust_state
+12 cluster_robust_state
+13 cluster_robust_state
+14 cluster_robust_state
+15 cluster_robust_state
+16 cluster_robust_state
+17 cluster_robust_state
+18 cluster_robust_state
+19 cluster_robust_state
+20 cluster_robust_state
+21 cluster_robust_state
+22 cluster_robust_state
+23 cluster_robust_state
+24 cluster_robust_state
+25 cluster_robust_state
+26 cluster_robust_state
+27 cluster_robust_state
+28 cluster_robust_state
+29 cluster_robust_state
+30 cluster_robust_state
+31 cluster_robust_state
+32 cluster_robust_state
+33 cluster_robust_state
+34 cluster_robust_state
+35 cluster_robust_state
+36 cluster_robust_state
+37 cluster_robust_state
+```

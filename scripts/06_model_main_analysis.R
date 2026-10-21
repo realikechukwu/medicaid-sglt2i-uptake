@@ -371,6 +371,7 @@ log_lines <- c(
   "```"
 )
 
+ensure_dir(dirname(log_file))
 writeLines(log_lines, log_file)
 
 message("Wrote main model tables, diagnostics, figures, and modelling log.")

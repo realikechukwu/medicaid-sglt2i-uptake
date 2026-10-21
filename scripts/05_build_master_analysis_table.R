@@ -325,11 +325,11 @@ log_lines <- c(
   "",
   "## Inputs",
   "",
-  paste0("- `", c(sglt2_file, enrolment_file, covariate_files), "`"),
+  paste0("- `", relative_project_path(c(sglt2_file, enrolment_file, covariate_files)), "`"),
   "",
   "## Output",
   "",
-  paste0("- `", master_file, "`"),
+  paste0("- `", relative_project_path(master_file), "`"),
   paste0("- Rows: ", nrow(master)),
   paste0("- Columns: ", ncol(master)),
   "",
@@ -355,6 +355,7 @@ log_lines <- c(
   "```"
 )
 
+ensure_dir(dirname(log_file))
 writeLines(log_lines, log_file)
 
 message("Wrote final master table: ", master_file)

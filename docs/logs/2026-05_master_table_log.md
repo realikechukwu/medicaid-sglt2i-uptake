@@ -4,18 +4,18 @@ Date: 2026-05-04
 
 ## Inputs
 
-- `/Users/ikechukwuchukwudi/Documents/Academic/IMT-ACF Folder/Papers - Active/r-analysis-sglt2/data_processed/sdud_extracts/sglt2_state_quarter_all_products_2015_2025.csv`
-- `/Users/ikechukwuchukwudi/Documents/Academic/IMT-ACF Folder/Papers - Active/r-analysis-sglt2/data_processed/enrolment/medicaid_enrolment_state_quarter.csv`
-- `/Users/ikechukwuchukwudi/Documents/Academic/IMT-ACF Folder/Papers - Active/r-analysis-sglt2/data_processed/covariates/medicaid_expansion_state_quarter.csv`
-- `/Users/ikechukwuchukwudi/Documents/Academic/IMT-ACF Folder/Papers - Active/r-analysis-sglt2/data_processed/covariates/ahrf_physician_density_2023_50dc.csv`
-- `/Users/ikechukwuchukwudi/Documents/Academic/IMT-ACF Folder/Papers - Active/r-analysis-sglt2/data_processed/covariates/mmd_disease_burden_2023_50dc.csv`
-- `/Users/ikechukwuchukwudi/Documents/Academic/IMT-ACF Folder/Papers - Active/r-analysis-sglt2/data_processed/covariates/rucc_state_rurality_2023.csv`
-- `/Users/ikechukwuchukwudi/Documents/Academic/IMT-ACF Folder/Papers - Active/r-analysis-sglt2/data_processed/covariates/svi_state_2022_50dc.csv`
-- `/Users/ikechukwuchukwudi/Documents/Academic/IMT-ACF Folder/Papers - Active/r-analysis-sglt2/data_processed/covariates/census_region_division_50dc.csv`
+- `data_processed/sdud_extracts/sglt2_state_quarter_all_products_2015_2025.csv`
+- `data_processed/enrolment/medicaid_enrolment_state_quarter.csv`
+- `data_processed/covariates/medicaid_expansion_state_quarter.csv`
+- `data_processed/covariates/ahrf_physician_density_2023_50dc.csv`
+- `data_processed/covariates/mmd_disease_burden_2023_50dc.csv`
+- `data_processed/covariates/rucc_state_rurality_2023.csv`
+- `data_processed/covariates/svi_state_2022_50dc.csv`
+- `data_processed/covariates/census_region_division_50dc.csv`
 
 ## Output
 
-- `/Users/ikechukwuchukwudi/Documents/Academic/IMT-ACF Folder/Papers - Active/r-analysis-sglt2/for_analysis/master/master_state_quarter_sglt2_covariates.csv`
+- `for_analysis/master/master_state_quarter_sglt2_covariates.csv`
 - Rows: 1938
 - Columns: 42
 

@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the associated article."
+title: "Medicaid SGLT2 inhibitor uptake: analysis code"
+type: software
+authors:
+  - family-names: Chukwudi
+    given-names: Ikechukwu Roland
+    orcid: "https://orcid.org/0000-0002-0646-5031"
+repository-code: "https://github.com/realikechukwu/medicaid-sglt2i-uptake"
+license: MIT
+keywords:
+  - SGLT2 inhibitors
+  - Medicaid
+  - State Drug Utilization Data
+  - social vulnerability
+  - health equity
+  - cardiovascular disease
+preferred-citation:
+  type: article
+  title: "Unequal Diffusion of SGLT2 Inhibitors in Medicaid: The Role of Social Vulnerability and State Policy"
+  authors:
+    - family-names: Chukwudi
+      given-names: Ikechukwu Roland
+      orcid: "https://orcid.org/0000-0002-0646-5031"
+    - family-names: Nnamani
+      given-names: Ekene
+      orcid: "https://orcid.org/0009-0002-1445-7311"
+    - family-names: Akpabio
+      given-names: Nseobong Charles
+      orcid: "https://orcid.org/0000-0003-3796-0331"
+    - family-names: Shaka
+      given-names: Hafeez
+      orcid: "https://orcid.org/0000-0002-9456-4581"

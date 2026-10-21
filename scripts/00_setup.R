@@ -44,6 +44,12 @@ project_path <- function(...) {
   here::here(...)
 }
 
+# Repository-relative form of a project path, for logs that are committed.
+relative_project_path <- function(path) {
+  root <- paste0(here::here(), "/")
+  ifelse(startsWith(path, root), substring(path, nchar(root) + 1), path)
+}
+
 ensure_dir <- function(path) {
   dir.create(path, recursive = TRUE, showWarnings = FALSE)
   invisible(path)

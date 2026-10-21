@@ -10,7 +10,7 @@
 
 # Large raw SDUD source files
 # These annual Medicaid SDUD CSVs are several GB in total and should not be committed.
-data_raw/sdud/
+data_raw/sdud
 
 # Local database and transient query files
 *.duckdb
@@ -39,3 +39,13 @@ packrat/src/
 *.fdb_latexmk
 *.synctex.gz
 .positai
+
+# Raw downloads not used by the analysis pipeline (kept locally only)
+data_raw/covariates/*.csv
+data_raw/covariates/svi/SVI_2014_US_county.csv
+data_raw/covariates/svi/SVI_2016_US_county.csv
+data_raw/covariates/svi/SVI_2018_US_county.csv
+data_raw/covariates/svi/SVI_2020_US_county.csv
+
+# Project-root marker used for scratch copies
+.here

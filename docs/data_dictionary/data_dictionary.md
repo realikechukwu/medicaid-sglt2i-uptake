@@ -71,6 +71,17 @@ All rates use `medicaid_enrolment_quarter_avg`.
 - `descriptive_rurality_quarterly_trend.csv`
 - `descriptive_svi_quarterly_trend.csv`
 - `descriptive_state_summary.csv`
+- `sequential_models_key_results.csv`: Models 1-7 key associations (sequential adjustment series)
+- `sequential_models_cluster_robust_coefficients.csv`: all coefficients for Models 1-5
 - `model_diagnostics_summary.csv`
 - `poisson_overdispersion_check.csv`
 - `master_missingness_report.csv`
+
+## Manuscript Tables
+
+In `for_analysis/manuscript_tables/`, full precision, laid out as reported:
+
+- `table1_state_characteristics.csv`: Table 1 Panels A and B, one row per state
+- `table2_primary_model.csv`: Table 2, primary model (Model 6)
+- `table3_primary_vs_region_adjusted.csv`: Table 3, primary vs region-adjusted model (Model 7)
+- `table_supplement_sequential_models.csv`: sequential models 1-7

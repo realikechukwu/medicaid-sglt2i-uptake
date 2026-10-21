@@ -161,7 +161,9 @@ for (i in seq_len(nrow(sdud_file_index))) {
 sglt2_row_level <- DBI::dbGetQuery(con, "
   SELECT *
   FROM sdud_sglt2_all_years
-  ORDER BY state, CAST(year AS INTEGER), CAST(quarter AS INTEGER), sglt2_drug, ndc
+  ORDER BY state, CAST(year AS INTEGER), CAST(quarter AS INTEGER), sglt2_drug, ndc,
+    utilization_type, source_file, suppression_used, number_of_prescriptions,
+    units_reimbursed, total_amount_reimbursed, medicaid_amount_reimbursed
 ")
 
 safe_write_csv(
@@ -176,9 +178,10 @@ state_quarter_query <- function(where_clause = "") {
       CAST(year AS INTEGER) AS year,
       CAST(quarter AS INTEGER) AS quarter,
       SUM(CAST(number_of_prescriptions AS DOUBLE)) AS sglt2_prescriptions,
-      SUM(CAST(units_reimbursed AS DOUBLE)) AS sglt2_units,
-      SUM(CAST(medicaid_amount_reimbursed AS DOUBLE)) AS sglt2_medicaid_reimbursed,
-      SUM(CAST(total_amount_reimbursed AS DOUBLE)) AS sglt2_total_reimbursed,
+      -- Exact decimal sums: parallel floating-point addition order varies between runs.
+      CAST(SUM(CAST(units_reimbursed AS DECIMAL(38, 6))) AS DOUBLE) AS sglt2_units,
+      CAST(SUM(CAST(medicaid_amount_reimbursed AS DECIMAL(38, 6))) AS DOUBLE) AS sglt2_medicaid_reimbursed,
+      CAST(SUM(CAST(total_amount_reimbursed AS DECIMAL(38, 6))) AS DOUBLE) AS sglt2_total_reimbursed,
       COUNT(*) AS n_rows,
       COUNT(DISTINCT ndc) AS n_ndcs
     FROM sdud_sglt2_all_years
