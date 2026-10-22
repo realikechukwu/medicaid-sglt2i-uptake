@@ -6,13 +6,17 @@ Analysis code and outputs for the manuscript:
 
 > Chukwudi IR, Nnamani E, Akpabio NC, Shaka H. **Unequal Diffusion of SGLT2 Inhibitors in Medicaid: The Role of Social Vulnerability and State Policy.**
 
-The pipeline builds a state-quarter panel of Medicaid SGLT2 inhibitor prescribing for the 50 U.S. states and the District of Columbia, 2015 Q1–2025 Q2 (2020 excluded), from public CMS State Drug Utilization Data (SDUD). It links the panel to Medicaid enrolment denominators and state-level covariates, fits negative binomial models, and regenerates every table, figure and number reported in the manuscript from raw public data.
+The pipeline builds a state-quarter panel of Medicaid SGLT2 inhibitor prescribing for the 50 U.S. states and the District of Columbia, 2015 Q1–2025 Q2 (2020 excluded), from public CMS State Drug Utilization Data (SDUD). It links the panel to Medicaid enrolment denominators and state-level covariates and fits negative binomial models. The code is shared so that readers and reviewers can inspect the analytical decisions and verify the results reported in the manuscript.
+
+## Scope and intended use
+
+This repository documents one specific, preregistered analysis. It is provided for transparency and verification, not as a general-purpose tool. Applying it to new data releases, other drug classes, other populations or other time periods would require fresh decisions about data handling, model specification and interpretation. Its outputs should not be treated as findings without that independent methodological and clinical judgement.
 
 ## Research question
 
 How does Medicaid SGLT2 inhibitor prescribing vary across states and over time, and is it associated with state rurality, social vulnerability (CDC/ATSDR SVI), Medicaid expansion, cardiovascular physician supply and cardiometabolic disease burden?
 
-## Reproducing the analysis
+## Verifying the analysis
 
 Requirements: R ≥ 4.5 with the packages listed in `scripts/00_setup.R` (tidyverse, here, janitor, readxl, lubridate, DBI, duckdb, glue, MASS, broom, sandwich, lmtest, scales, forcats). The exact environment used for the reported results is recorded in [`docs/logs/r_session_info.txt`](docs/logs/r_session_info.txt).
 
@@ -23,7 +27,7 @@ Requirements: R ≥ 4.5 with the packages listed in `scripts/00_setup.R` (tidyve
 source("scripts/run_all.R")
 ```
 
-A full run takes under a minute on a recent laptop. The final step, `12_verify_manuscript_values.R`, compares each of the 844 values reported in the manuscript ([`docs/manuscript_reported_values.csv`](docs/manuscript_reported_values.csv)) with the regenerated outputs. It stops with an error if any value no longer matches. The latest check is in [`docs/logs/manuscript_value_check.csv`](docs/logs/manuscript_value_check.csv).
+A full run takes under a minute on a recent laptop. The final step, `12_verify_manuscript_values.R`, compares the values reported in the manuscript's tables and text, listed in [`docs/manuscript_reported_values.csv`](docs/manuscript_reported_values.csv), with the regenerated outputs. It stops with an error if any value no longer matches. The latest check is in [`docs/logs/manuscript_value_check.csv`](docs/logs/manuscript_value_check.csv).
 
 The pipeline is deterministic: repeated runs from the same raw files produce byte-identical outputs.
 
@@ -41,7 +45,7 @@ The pipeline is deterministic: repeated runs from the same raw files produce byt
 | `07_model_sensitivity_outcomes.R` | Restricted-outcome sensitivity models (single-agent; empagliflozin/dapagliflozin) |
 | `08_model_region_adjusted_sensitivity.R` | Census-region-adjusted models (Model 7) |
 | `09_model_sequential_series.R` | Sequential adjustment series (Models 1–5) and the Models 1–7 comparison |
-| `10_make_manuscript_tables.R` | Tables 1–3 and the supplementary sequential-model table, in manuscript layout |
+| `10_make_manuscript_tables.R` | Tables 1–3, Table S1, the supplementary sequential-model table and the SDUD suppression bound |
 | `11_check_final_outputs.R` | Confirms all expected outputs exist and the master table passes integrity checks |
 | `12_verify_manuscript_values.R` | Checks every manuscript-reported value against regenerated outputs |
 
@@ -51,10 +55,11 @@ Values in the output files keep full precision. Rounding is applied only in the 
 
 | Manuscript item | Output file | Script |
 |---|---|---|
-| Table 1 (Panels A and B): state characteristics | `for_analysis/manuscript_tables/table1_state_characteristics.csv` | 06, 10 |
+| Table 1: state characteristics by SVI quintile | `for_analysis/manuscript_tables/table1_svi_quintile_summary.csv` | 06, 10 |
+| Table S1 (Panels A and B): state-level characteristics | `for_analysis/manuscript_tables/table_s1_state_characteristics.csv` | 06, 10 |
 | Table 2: primary fully adjusted model | `for_analysis/manuscript_tables/table2_primary_model.csv` | 06, 10 |
 | Table 3: primary vs Census-region-adjusted model | `for_analysis/manuscript_tables/table3_primary_vs_region_adjusted.csv` | 06, 08, 10 |
-| Sequential models (Methods; Results/Discussion statements on how SVI changes with adjustment) | `for_analysis/manuscript_tables/table_supplement_sequential_models.csv` | 06, 08, 09 |
+| Table S5: sequential models (Methods; Results/Discussion statements on how SVI changes with adjustment) | `for_analysis/manuscript_tables/table_supplement_sequential_models.csv` | 06, 08, 09 |
 | Figure 1: national quarterly prescribing | `for_analysis/model_outputs/figures/fig1_national_quarterly_sglt2_rate.png` | 06 |
 | Figure 2: prescribing by rurality quintile | `for_analysis/model_outputs/figures/fig2_rurality_quintile_quarterly_sglt2_rate.png` | 06 |
 | Figure 3: prescribing by SVI quintile | `for_analysis/model_outputs/figures/fig3_svi_quintile_quarterly_sglt2_rate.png` | 06 |
@@ -71,6 +76,7 @@ Values in the output files keep full precision. Rounding is applied only in the 
 | Continuous-rurality sensitivity | `for_analysis/model_outputs/tables/main_model_key_results.csv` (`sensitivity_continuous_rurality`) | 06 |
 | Full coefficient tables | `for_analysis/model_outputs/tables/*_coefficients.csv` | 06, 09 |
 | Model diagnostics (convergence, theta, AIC, overdispersion) | `for_analysis/model_outputs/diagnostics/` | 06–09 |
+| SDUD suppression bound (Methods) | `for_analysis/model_outputs/diagnostics/sdud_suppression_bound.csv` | 10 |
 
 ## Model specification
 

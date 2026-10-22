@@ -1,0 +1,31 @@
+row_id,characteristic,statistic,svi_q1,svi_q2,svi_q3,svi_q4,svi_q5,all_states
+states_n,States,n,11,10,10,10,10,51
+svi_min,SVI,minimum,0.17049422945615064,0.3869405412318449,0.456694389012563,0.5635629844017712,0.6796498657520914,0.17049422945615064
+svi_max,SVI,maximum,0.35096061300039766,0.4565554527625077,0.5634214583504683,0.6525743603130622,0.8151928572950156,0.8151928572950156
+nonmetro_pct_median,"Nonmetro population, %",median,39.818943542114305,21.2816902090277,11.447156570896126,15.902212891789986,12.902566365537293,21.038848254322954
+nonmetro_pct_p25,"Nonmetro population, %",25th percentile,31.225862335830545,14.35705634491336,4.742513417128416,8.716149297528833,5.405773667709419,11.054560982772387
+nonmetro_pct_p75,"Nonmetro population, %",75th percentile,47.47367265385232,28.911211497082476,20.634846035612433,21.971109858169772,33.110834471610474,33.92306866491438
+most_rural_quintile_n,Most-rural quintile states,n,7,1,1,0,2,11
+region_northeast_n,Census region: Northeast,n,3,1,3,2,0,9
+region_midwest_n,Census region: Midwest,n,5,5,2,0,0,12
+region_south_n,Census region: South,n,0,2,3,6,6,17
+region_west_n,Census region: West,n,3,2,2,2,4,13
+expansion_active_final_quarter_n,Medicaid expansion active in final quarter,n,9,9,9,7,7,41
+expansion_active_final_quarter_pct,Medicaid expansion active in final quarter,%,81.81818181818183,90,90,70,70,80.3921568627451
+mean_medicaid_enrolment_millions,"Mean Medicaid enrolment, millions",sum of state means,4.73049952631579,14.212861921052633,14.487673561403511,17.3980921754386,30.61977125438597,81.44889843859647
+total_prescriptions_millions,"Total SGLT2 prescriptions, millions",sum,1.137161,4.335265,3.790197,4.618253,6.042788,19.923664
+cvd_physicians_median,"CVD physicians per 100,000",median,4.8,6.23,7.115,5.72,4.890000000000001,5.84
+cvd_physicians_p25,"CVD physicians per 100,000",25th percentile,3.785,5.8775,5.545,5.1575,4.305,4.625
+cvd_physicians_p75,"CVD physicians per 100,000",75th percentile,7.85,7.2175,10.01,9.142499999999998,5.932500000000001,7.545
+hf_ihd_median,"HF/IHD prevalence, %",median,11,12,11.5,11.5,13,12
+hf_ihd_p25,"HF/IHD prevalence, %",25th percentile,9.5,11.25,11,10.25,11.25,10
+hf_ihd_p75,"HF/IHD prevalence, %",75th percentile,11.5,13,12.75,12,13.75,13
+diabetes_median,"Diabetes prevalence, %",median,22,25,26.5,26,26.5,25
+diabetes_p25,"Diabetes prevalence, %",25th percentile,19.5,23.5,22.25,25.25,25,22
+diabetes_p75,"Diabetes prevalence, %",75th percentile,23,26,27,28.75,27.75,27
+ckd_median,"CKD prevalence, %",median,16,18.5,19,17.5,19,18
+ckd_p25,"CKD prevalence, %",25th percentile,13,18,17.25,16,18,16
+ckd_p75,"CKD prevalence, %",75th percentile,19,19.75,19.75,20,20,20
+rate_first_quarter,"Prescribing rate per 10,000",2015 Q1,5.891757334265643,7.002226750649923,5.034855766332537,8.98755102206771,4.39528269580331,5.973826632662895
+rate_last_pre_2020_quarter,"Prescribing rate per 10,000",2019 Q4,40.36175271406567,45.064930681354944,47.33652866884101,51.993270511173996,39.89119745496046,44.766936345467464
+rate_final_quarter,"Prescribing rate per 10,000",2025 Q2,177.6659108034574,183.19680120900261,155.2837597896215,142.73182934852332,100.83869606080087,137.92360459419237

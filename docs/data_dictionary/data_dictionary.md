@@ -76,12 +76,14 @@ All rates use `medicaid_enrolment_quarter_avg`.
 - `model_diagnostics_summary.csv`
 - `poisson_overdispersion_check.csv`
 - `master_missingness_report.csv`
+- `sdud_suppression_bound.csv`: upper bound on prescriptions hidden by SDUD small-cell suppression in the analysed state-quarters (Methods)
 
 ## Manuscript Tables
 
 In `for_analysis/manuscript_tables/`, full precision, laid out as reported:
 
-- `table1_state_characteristics.csv`: Table 1 Panels A and B, one row per state
+- `table1_svi_quintile_summary.csv`: Table 1, state characteristics by SVI quintile, one row per characteristic and statistic
+- `table_s1_state_characteristics.csv`: Table S1 Panels A and B, one row per state
 - `table2_primary_model.csv`: Table 2, primary model (Model 6)
 - `table3_primary_vs_region_adjusted.csv`: Table 3, primary vs region-adjusted model (Model 7)
 - `table_supplement_sequential_models.csv`: sequential models 1-7

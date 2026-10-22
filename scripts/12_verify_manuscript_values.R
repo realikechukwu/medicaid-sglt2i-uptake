@@ -29,7 +29,13 @@ lookup_value <- function(file, key_column, key_value, value_column, transform) {
     return(as.character(nrow(data)))
   }
 
-  matched <- data[data[[key_column]] == key_value, , drop = FALSE]
+  # Composite keys are written as "col_a|col_b" with values "value_a|value_b".
+  key_columns <- strsplit(key_column, "|", fixed = TRUE)[[1]]
+  key_values <- strsplit(key_value, "|", fixed = TRUE)[[1]]
+  matched <- data
+  for (i in seq_along(key_columns)) {
+    matched <- matched[matched[[key_columns[i]]] == key_values[i], , drop = FALSE]
+  }
   if (nrow(matched) != 1 || !value_column %in% names(matched)) {
     return(NA_character_)
   }
