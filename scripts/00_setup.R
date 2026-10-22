@@ -16,7 +16,8 @@ required_packages <- c(
   "lmtest",
   "ggplot2",
   "scales",
-  "forcats"
+  "forcats",
+  "writexl"
 )
 
 missing_packages <- required_packages[

@@ -86,4 +86,8 @@ In `for_analysis/manuscript_tables/`, full precision, laid out as reported:
 - `table_s1_state_characteristics.csv`: Table S1 Panels A and B, one row per state
 - `table2_primary_model.csv`: Table 2, primary model (Model 6)
 - `table3_primary_vs_region_adjusted.csv`: Table 3, primary vs region-adjusted model (Model 7)
-- `table_supplement_sequential_models.csv`: sequential models 1-7
+- `table_s2_national_quarterly.csv`: Table S2, national quarterly prescribing, one row per quarter
+- `table_s3_rurality_quintile_quarterly.csv`: Table S3, rurality-quintile rates, prescriptions and enrolment, one row per quarter (`_q1` = most rural)
+- `table_s4_svi_quintile_quarterly.csv`: Table S4, SVI-quintile rates, prescriptions and enrolment, one row per quarter (`_q1` = lowest SVI)
+- `table_s5_sequential_models.csv`: Table S5, sequential models 1-7
+- `supplementary_tables_S2_S5.xlsx`: Tables S2-S5 rounded for presentation, with a Description sheet of titles and footnotes

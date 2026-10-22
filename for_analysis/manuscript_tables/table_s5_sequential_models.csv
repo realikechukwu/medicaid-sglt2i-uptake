@@ -1,27 +1,27 @@
 model_id,model_label,adjustment_set,exposure,comparison_or_unit,term,irr,conf_low,conf_high,p_value,se_type
 model_1,Model 1,Rurality + time,Rurality,Q1 most rural vs Q5 most urban,rurality_quintile1,0.8691666402350455,0.5383709732719514,1.4032157861450498,0.5661183193549273,cluster_robust_state
-model_1,Model 1,Rurality + time,Rurality,Q2 vs Q5 most urban,rurality_quintile2,0.8576525454678544,0.5678354076105713,1.2953892604949213,0.4654762404088438,cluster_robust_state
-model_1,Model 1,Rurality + time,Rurality,Q3 vs Q5 most urban,rurality_quintile3,0.8582564200865186,0.5710791543925348,1.2898458592894417,0.4620854635303928,cluster_robust_state
-model_1,Model 1,Rurality + time,Rurality,Q4 vs Q5 most urban,rurality_quintile4,0.7077549863448775,0.4694997904223393,1.0669166012735318,0.09880416208704605,cluster_robust_state
-model_2,Model 2,SVI + time,SVI,Per 0.1 increase,svi_2022_per_0_1,0.9557302710163951,0.8926125098588946,1.0233111690104664,0.19396338046460357,cluster_robust_state
+model_1,Model 1,Rurality + time,Rurality,Q2 vs Q5 most urban,rurality_quintile2,0.8576525454678544,0.5678354076105713,1.295389260494921,0.4654762404088438,cluster_robust_state
+model_1,Model 1,Rurality + time,Rurality,Q3 vs Q5 most urban,rurality_quintile3,0.8582564200865186,0.5710791543925348,1.2898458592894415,0.4620854635303928,cluster_robust_state
+model_1,Model 1,Rurality + time,Rurality,Q4 vs Q5 most urban,rurality_quintile4,0.7077549863448775,0.4694997904223393,1.0669166012735318,0.09880416208704604,cluster_robust_state
+model_2,Model 2,SVI + time,SVI,Per 0.1 increase,svi_2022_per_0_1,0.9557302710163952,0.8926125098588946,1.0233111690104664,0.19396338046460357,cluster_robust_state
 model_3,Model 3,Rurality + SVI + time,Rurality,Q1 most rural vs Q5 most urban,rurality_quintile1,0.7704607520909528,0.4343328291280656,1.3667163306633847,0.37255374414642023,cluster_robust_state
 model_3,Model 3,Rurality + SVI + time,Rurality,Q2 vs Q5 most urban,rurality_quintile2,0.781500244447903,0.49950068268225206,1.2227063010054873,0.28033819246983194,cluster_robust_state
 model_3,Model 3,Rurality + SVI + time,Rurality,Q3 vs Q5 most urban,rurality_quintile3,0.8205943498929665,0.5514715642459778,1.2210513301750388,0.32950901525578047,cluster_robust_state
 model_3,Model 3,Rurality + SVI + time,Rurality,Q4 vs Q5 most urban,rurality_quintile4,0.6876916560214529,0.4443402747741271,1.0643190379308494,0.0929069892952989,cluster_robust_state
 model_3,Model 3,Rurality + SVI + time,SVI,Per 0.1 increase,svi_2022_per_0_1,0.938840961641769,0.8573206014979715,1.028112878328548,0.17327471579574988,cluster_robust_state
 model_4,Model 4,Model 3 + Medicaid expansion,Rurality,Q1 most rural vs Q5 most urban,rurality_quintile1,0.8795727341343395,0.5197940523352362,1.488374465149902,0.632547959258184,cluster_robust_state
-model_4,Model 4,Model 3 + Medicaid expansion,Rurality,Q2 vs Q5 most urban,rurality_quintile2,0.9781555473262356,0.6299747582080241,1.5187723988921253,0.9216241046569872,cluster_robust_state
-model_4,Model 4,Model 3 + Medicaid expansion,Rurality,Q3 vs Q5 most urban,rurality_quintile3,0.942139349107266,0.6707918015839079,1.3232519405281247,0.7309232842982551,cluster_robust_state
+model_4,Model 4,Model 3 + Medicaid expansion,Rurality,Q2 vs Q5 most urban,rurality_quintile2,0.9781555473262356,0.6299747582080241,1.5187723988921251,0.9216241046569872,cluster_robust_state
+model_4,Model 4,Model 3 + Medicaid expansion,Rurality,Q3 vs Q5 most urban,rurality_quintile3,0.942139349107266,0.6707918015839079,1.323251940528125,0.7309232842982551,cluster_robust_state
 model_4,Model 4,Model 3 + Medicaid expansion,Rurality,Q4 vs Q5 most urban,rurality_quintile4,0.7534925567980009,0.5158223827557605,1.1006715724835383,0.14322402212347804,cluster_robust_state
 model_4,Model 4,Model 3 + Medicaid expansion,SVI,Per 0.1 increase,svi_2022_per_0_1,0.9570252112571814,0.8745342673461515,1.0472971605346246,0.33951020334229026,cluster_robust_state
 model_4,Model 4,Model 3 + Medicaid expansion,Medicaid expansion,Active vs not active,medicaid_expansion_active,1.6499162360071244,1.2800052079339257,2.126728523420538,1.1064234108039153e-4,cluster_robust_state
-model_5,Model 5,Model 4 + CVD physician density,Rurality,Q1 most rural vs Q5 most urban,rurality_quintile1,0.9821557945676106,0.5404164804987173,1.784975180461811,0.9528944160962979,cluster_robust_state
-model_5,Model 5,Model 4 + CVD physician density,Rurality,Q2 vs Q5 most urban,rurality_quintile2,1.0802600481714344,0.6568169919374416,1.7766924211767299,0.7610362927345695,cluster_robust_state
-model_5,Model 5,Model 4 + CVD physician density,Rurality,Q3 vs Q5 most urban,rurality_quintile3,1.020371046411381,0.7029439206475101,1.4811381701624293,0.9155276447603412,cluster_robust_state
+model_5,Model 5,Model 4 + CVD physician density,Rurality,Q1 most rural vs Q5 most urban,rurality_quintile1,0.9821557945676106,0.5404164804987173,1.784975180461811,0.952894416096298,cluster_robust_state
+model_5,Model 5,Model 4 + CVD physician density,Rurality,Q2 vs Q5 most urban,rurality_quintile2,1.0802600481714344,0.6568169919374416,1.77669242117673,0.7610362927345695,cluster_robust_state
+model_5,Model 5,Model 4 + CVD physician density,Rurality,Q3 vs Q5 most urban,rurality_quintile3,1.020371046411381,0.7029439206475101,1.481138170162429,0.9155276447603412,cluster_robust_state
 model_5,Model 5,Model 4 + CVD physician density,Rurality,Q4 vs Q5 most urban,rurality_quintile4,0.8259228019679847,0.5393111829374132,1.2648513444413594,0.3791208959405889,cluster_robust_state
-model_5,Model 5,Model 4 + CVD physician density,SVI,Per 0.1 increase,svi_2022_per_0_1,0.9642878673032017,0.8792179611642181,1.057588825638745,0.4402646653665845,cluster_robust_state
+model_5,Model 5,Model 4 + CVD physician density,SVI,Per 0.1 increase,svi_2022_per_0_1,0.9642878673032016,0.8792179611642181,1.057588825638745,0.4402646653665845,cluster_robust_state
 model_5,Model 5,Model 4 + CVD physician density,Medicaid expansion,Active vs not active,medicaid_expansion_active,1.641120120110086,1.2807339584657509,2.1029154656417006,9.004901323471163e-5,cluster_robust_state
-model_5,Model 5,Model 4 + CVD physician density,CVD physician density,Per 1 CVD physician per 100k,cvd_physicians_per_100k_2023,1.0202305891733088,0.9676297926288223,1.0756907889918488,0.458329081262559,cluster_robust_state
+model_5,Model 5,Model 4 + CVD physician density,CVD physician density,Per 1 CVD physician per 100k,cvd_physicians_per_100k_2023,1.0202305891733088,0.9676297926288224,1.0756907889918488,0.458329081262559,cluster_robust_state
 model_6,Model 6 (primary),"Model 5 + Medicare FFS HF/IHD, diabetes and CKD prevalence",Rurality,Q1 most rural vs Q5 most urban,rurality_quintile1,0.7881247674008559,0.4619149877247941,1.3447077178641464,0.3824068305115767,cluster_robust_state
 model_6,Model 6 (primary),"Model 5 + Medicare FFS HF/IHD, diabetes and CKD prevalence",Rurality,Q2 vs Q5 most urban,rurality_quintile2,0.9222020552272562,0.6032261759830343,1.409847026746555,0.7084224666222185,cluster_robust_state
 model_6,Model 6 (primary),"Model 5 + Medicare FFS HF/IHD, diabetes and CKD prevalence",Rurality,Q3 vs Q5 most urban,rurality_quintile3,0.7200231747524765,0.5018202634779465,1.0331056952295008,0.07455560510552602,cluster_robust_state

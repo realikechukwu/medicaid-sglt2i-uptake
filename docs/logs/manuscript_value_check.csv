@@ -1027,12 +1027,12 @@ Methods,for_analysis/model_outputs/diagnostics/poisson_overdispersion_check.csv,
 Results text,for_analysis/model_outputs/tables/descriptive_national_quarterly_trend.csv,year_quarter,2019 Q4,national_prescriptions_per_10000,round,44.8,44.766936345467464,TRUE
 Results text,for_analysis/model_outputs/tables/descriptive_rurality_quarterly_trend.csv,rurality_quintile|year_quarter,1|2025 Q2,prescriptions_per_10000,round,179.4,179.4025130990699,TRUE
 Results text,for_analysis/model_outputs/tables/descriptive_rurality_quarterly_trend.csv,rurality_quintile|year_quarter,5|2025 Q2,prescriptions_per_10000,round,130.7,130.69411701438966,TRUE
-Results text,for_analysis/manuscript_tables/table_supplement_sequential_models.csv,model_id|term,model_2|svi_2022_per_0_1,irr,round,0.956,0.9557302710163951,TRUE
-Results text,for_analysis/manuscript_tables/table_supplement_sequential_models.csv,model_id|term,model_2|svi_2022_per_0_1,conf_low,round,0.893,0.8926125098588946,TRUE
-Results text,for_analysis/manuscript_tables/table_supplement_sequential_models.csv,model_id|term,model_2|svi_2022_per_0_1,conf_high,round,1.023,1.0233111690104664,TRUE
-Results text,for_analysis/manuscript_tables/table_supplement_sequential_models.csv,model_id|term,model_2|svi_2022_per_0_1,p_value,round,0.19,0.19396338046460357,TRUE
-Results text,for_analysis/manuscript_tables/table_supplement_sequential_models.csv,model_id|term,model_5|medicaid_expansion_active,irr,round,1.641,1.641120120110086,TRUE
-Results text,for_analysis/manuscript_tables/table_supplement_sequential_models.csv,model_id|term,model_6|medicaid_expansion_active,irr,round,1.711,1.7105655511262974,TRUE
+Results text,for_analysis/manuscript_tables/table_s5_sequential_models.csv,model_id|term,model_2|svi_2022_per_0_1,irr,round,0.956,0.9557302710163952,TRUE
+Results text,for_analysis/manuscript_tables/table_s5_sequential_models.csv,model_id|term,model_2|svi_2022_per_0_1,conf_low,round,0.893,0.8926125098588946,TRUE
+Results text,for_analysis/manuscript_tables/table_s5_sequential_models.csv,model_id|term,model_2|svi_2022_per_0_1,conf_high,round,1.023,1.0233111690104664,TRUE
+Results text,for_analysis/manuscript_tables/table_s5_sequential_models.csv,model_id|term,model_2|svi_2022_per_0_1,p_value,round,0.19,0.19396338046460357,TRUE
+Results text,for_analysis/manuscript_tables/table_s5_sequential_models.csv,model_id|term,model_5|medicaid_expansion_active,irr,round,1.641,1.641120120110086,TRUE
+Results text,for_analysis/manuscript_tables/table_s5_sequential_models.csv,model_id|term,model_6|medicaid_expansion_active,irr,round,1.711,1.7105655511262974,TRUE
 Results text,for_analysis/model_outputs/tables/main_model_key_results.csv,model_id|term,sensitivity_continuous_rurality|rucc_nonmetro_population_share_per_10pct,irr,round,0.933,0.9330468911730261,TRUE
 Results text,for_analysis/model_outputs/tables/main_model_key_results.csv,model_id|term,sensitivity_continuous_rurality|rucc_nonmetro_population_share_per_10pct,conf_low,round,0.847,0.846802426346718,TRUE
 Results text,for_analysis/model_outputs/tables/main_model_key_results.csv,model_id|term,sensitivity_continuous_rurality|rucc_nonmetro_population_share_per_10pct,conf_high,round,1.028,1.0280751141485236,TRUE

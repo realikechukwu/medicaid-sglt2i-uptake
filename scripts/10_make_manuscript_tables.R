@@ -311,11 +311,155 @@ if (nrow(table3) != length(table3_terms)) {
 
 safe_write_csv(table3, file.path(manuscript_dir, "table3_primary_vs_region_adjusted.csv"))
 
-# Supplementary table: sequential adjustment series (Models 1-7).
-file.copy(
-  sequential_key_file,
-  file.path(manuscript_dir, "table_supplement_sequential_models.csv"),
-  overwrite = TRUE
+# Table S2: national quarterly prescribing.
+national_trend <- readr::read_csv(file.path(tables_dir, "descriptive_national_quarterly_trend.csv"), show_col_types = FALSE)
+
+table_s2 <- national_trend |>
+  dplyr::arrange(year, quarter) |>
+  dplyr::select(year_quarter, total_sglt2_prescriptions, total_medicaid_enrolment, national_prescriptions_per_10000)
+
+safe_write_csv(table_s2, file.path(manuscript_dir, "table_s2_national_quarterly.csv"))
+
+# Tables S3 and S4: quintile quarterly prescribing, one row per quarter.
+widen_quintile_trend <- function(trend, quintile_column) {
+  trend |>
+    dplyr::arrange(year, quarter) |>
+    dplyr::transmute(
+      year_quarter,
+      quintile = .data[[quintile_column]],
+      rate = prescriptions_per_10000,
+      prescriptions = total_sglt2_prescriptions,
+      enrolment = total_medicaid_enrolment
+    ) |>
+    tidyr::pivot_wider(
+      names_from = quintile,
+      values_from = c(rate, prescriptions, enrolment),
+      names_glue = "{.value}_q{quintile}"
+    )
+}
+
+rurality_trend <- readr::read_csv(file.path(tables_dir, "descriptive_rurality_quarterly_trend.csv"), show_col_types = FALSE)
+svi_trend <- readr::read_csv(svi_trend_file, show_col_types = FALSE)
+
+table_s3 <- widen_quintile_trend(rurality_trend, "rurality_quintile")
+table_s4 <- widen_quintile_trend(svi_trend, "svi_quintile")
+
+n_quarters <- dplyr::n_distinct(master$year, master$quarter)
+for (quintile_table in list(table_s2, table_s3, table_s4)) {
+  if (nrow(quintile_table) != n_quarters || anyNA(quintile_table)) {
+    stop("Tables S2-S4 must have one complete row per analysed quarter.", call. = FALSE)
+  }
+}
+
+safe_write_csv(table_s3, file.path(manuscript_dir, "table_s3_rurality_quintile_quarterly.csv"))
+safe_write_csv(table_s4, file.path(manuscript_dir, "table_s4_svi_quintile_quarterly.csv"))
+
+# Table S5: sequential adjustment series (Models 1-7).
+table_s5 <- readr::read_csv(sequential_key_file, show_col_types = FALSE)
+safe_write_csv(table_s5, file.path(manuscript_dir, "table_s5_sequential_models.csv"))
+
+# Formatted copy of Tables S2-S5 for the supplementary material, with a
+# description sheet holding titles and footnotes. The CSVs above remain the
+# full-precision record; this workbook is rounded for presentation.
+format_p <- function(p) dplyr::if_else(p < 0.001, "<0.001", sprintf("%.3f", p))
+format_ci <- function(low, high) paste0(sprintf("%.3f", low), "–", sprintf("%.3f", high))
+
+quintile_headers <- function(trend, quintile_column, label_column) {
+  trend |>
+    dplyr::distinct(quintile = .data[[quintile_column]], label = .data[[label_column]], n_states) |>
+    dplyr::arrange(quintile) |>
+    dplyr::mutate(header = paste0(label, " (", n_states, " states)"))
+}
+
+format_quintile_sheet <- function(wide, headers) {
+  out <- tibble::tibble(Quarter = wide$year_quarter)
+  for (measure in c("rate", "prescriptions", "enrolment")) {
+    measure_label <- c(
+      rate = "Rate per 10,000",
+      prescriptions = "Prescriptions",
+      enrolment = "Mean monthly enrolment"
+    )[[measure]]
+    for (i in seq_len(nrow(headers))) {
+      values <- wide[[paste0(measure, "_q", headers$quintile[i])]]
+      out[[paste0(measure_label, ": ", headers$header[i])]] <- if (measure == "rate") round(values, 1) else round(values)
+    }
+  }
+  out
+}
+
+xlsx_s2 <- table_s2 |>
+  dplyr::transmute(
+    Quarter = year_quarter,
+    Prescriptions = total_sglt2_prescriptions,
+    `Mean monthly Medicaid enrolment` = round(total_medicaid_enrolment),
+    `Rate per 10,000 beneficiaries` = round(national_prescriptions_per_10000, 1)
+  )
+
+xlsx_s3 <- format_quintile_sheet(table_s3, quintile_headers(rurality_trend, "rurality_quintile", "rurality_quintile_label"))
+xlsx_s4 <- format_quintile_sheet(table_s4, quintile_headers(svi_trend, "svi_quintile", "svi_quintile_label"))
+
+xlsx_s5 <- table_s5 |>
+  dplyr::transmute(
+    Model = model_label,
+    `Adjustment set` = adjustment_set,
+    Exposure = exposure,
+    Comparison = comparison_or_unit,
+    IRR = round(irr, 3),
+    `95% CI` = format_ci(conf_low, conf_high),
+    `P value` = format_p(p_value)
+  )
+
+period_note <- paste0(
+  "Data cover ", table_s2$year_quarter[1], "–", dplyr::last(table_s2$year_quarter),
+  ", excluding 2020, for the 50 states and the District of Columbia. "
+)
+rate_note <- "Prescriptions include refills and fixed-dose combinations and pool fee-for-service and managed care utilisation. "
+
+xlsx_description <- tibble::tribble(
+  ~Sheet, ~Table, ~Title, ~Notes,
+  "Table S2", "Table S2",
+  "National quarterly Medicaid SGLT2 prescribing, 2015 Q1–2025 Q2, excluding 2020",
+  paste0(
+    period_note, rate_note,
+    "Enrolment is the sum of state mean monthly Medicaid enrolment in each quarter. ",
+    "Rate = prescriptions / enrolment × 10,000. 2020 is excluded because the public State Drug Utilization Data release contained only fourth-quarter data for that year."
+  ),
+  "Table S3", "Table S3",
+  "Quarterly Medicaid SGLT2 prescribing by rurality quintile: rates, prescription counts and enrolment",
+  paste0(
+    period_note, rate_note,
+    "Q1 contains the most rural and Q5 the most urban states, ranked by the share of the 2020 population living in nonmetropolitan counties (2023 Rural–Urban Continuum Codes 4–9). ",
+    "Quintile membership is fixed across the study period; the number of states in each quintile is shown in the column headings. ",
+    "Rates are pooled quintile prescriptions divided by pooled mean monthly Medicaid enrolment, per 10,000 beneficiaries."
+  ),
+  "Table S4", "Table S4",
+  "Quarterly Medicaid SGLT2 prescribing by state SVI quintile: rates, prescription counts and enrolment",
+  paste0(
+    period_note, rate_note,
+    "Q1 contains the least and Q5 the most socially vulnerable states, ranked by the population-weighted 2022 CDC/ATSDR Social Vulnerability Index. ",
+    "Quintiles are descriptive; regression models analysed SVI continuously per 0.1 increase. The number of states in each quintile is shown in the column headings. ",
+    "Rates are pooled quintile prescriptions divided by pooled mean monthly Medicaid enrolment, per 10,000 beneficiaries."
+  ),
+  "Table S5", "Table S5",
+  "Associations of rurality, social vulnerability and Medicaid expansion with SGLT2 prescribing across the sequential adjustment series (Models 1–7)",
+  paste0(
+    "All models are negative binomial regressions with log quarterly mean monthly Medicaid enrolment as an offset, categorical calendar year and quarter, and state-clustered robust 95% confidence intervals. ",
+    "Model 1: rurality and time. Model 2: SVI and time. Model 3: rurality, SVI and time. Model 4: Model 3 plus Medicaid expansion. ",
+    "Model 5: Model 4 plus cardiovascular physician density. Model 6 (primary; Table 2): Model 5 plus Medicare fee-for-service heart failure/ischaemic heart disease, diabetes and chronic kidney disease prevalence. ",
+    "Model 7 (Table 3): Model 6 plus Census region. Rurality reference: Q5 (most urban). ",
+    "CI, confidence interval; IRR, incidence rate ratio; SVI, Social Vulnerability Index."
+  )
+)
+
+writexl::write_xlsx(
+  list(
+    Description = xlsx_description,
+    `Table S2` = xlsx_s2,
+    `Table S3` = xlsx_s3,
+    `Table S4` = xlsx_s4,
+    `Table S5` = xlsx_s5
+  ),
+  file.path(manuscript_dir, "supplementary_tables_S2_S5.xlsx")
 )
 
 message("Wrote manuscript tables to: ", relative_project_path(manuscript_dir))

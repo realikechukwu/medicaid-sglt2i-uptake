@@ -18,7 +18,7 @@ How does Medicaid SGLT2 inhibitor prescribing vary across states and over time, 
 
 ## Verifying the analysis
 
-Requirements: R ≥ 4.5 with the packages listed in `scripts/00_setup.R` (tidyverse, here, janitor, readxl, lubridate, DBI, duckdb, glue, MASS, broom, sandwich, lmtest, scales, forcats). The exact environment used for the reported results is recorded in [`docs/logs/r_session_info.txt`](docs/logs/r_session_info.txt).
+Requirements: R ≥ 4.5 with the packages listed in `scripts/00_setup.R` (tidyverse, here, janitor, readxl, lubridate, DBI, duckdb, glue, MASS, broom, sandwich, lmtest, scales, forcats, writexl). The exact environment used for the reported results is recorded in [`docs/logs/r_session_info.txt`](docs/logs/r_session_info.txt).
 
 1. Download the SDUD annual files (see [Data sources](#data-sources)) into `data_raw/sdud/`. They are several GB, so they are not included in this repository. All other raw inputs are included.
 2. From the repository root (or by opening `medicaid-sglt2i-uptake.Rproj`), run:
@@ -29,7 +29,7 @@ source("scripts/run_all.R")
 
 A full run takes under a minute on a recent laptop. The final step, `12_verify_manuscript_values.R`, compares the values reported in the manuscript's tables and text, listed in [`docs/manuscript_reported_values.csv`](docs/manuscript_reported_values.csv), with the regenerated outputs. It stops with an error if any value no longer matches. The latest check is in [`docs/logs/manuscript_value_check.csv`](docs/logs/manuscript_value_check.csv).
 
-The pipeline is deterministic: repeated runs from the same raw files produce byte-identical outputs.
+The pipeline is deterministic: repeated runs from the same raw files produce byte-identical outputs, apart from the embedded creation timestamp in the presentation workbook `supplementary_tables_S2_S5.xlsx`.
 
 ## Pipeline
 
@@ -45,7 +45,7 @@ The pipeline is deterministic: repeated runs from the same raw files produce byt
 | `07_model_sensitivity_outcomes.R` | Restricted-outcome sensitivity models (single-agent; empagliflozin/dapagliflozin) |
 | `08_model_region_adjusted_sensitivity.R` | Census-region-adjusted models (Model 7) |
 | `09_model_sequential_series.R` | Sequential adjustment series (Models 1–5) and the Models 1–7 comparison |
-| `10_make_manuscript_tables.R` | Tables 1–3, Table S1, the supplementary sequential-model table and the SDUD suppression bound |
+| `10_make_manuscript_tables.R` | Tables 1–3, Tables S1–S5 (CSV, plus a formatted workbook for S2–S5) and the SDUD suppression bound |
 | `11_check_final_outputs.R` | Confirms all expected outputs exist and the master table passes integrity checks |
 | `12_verify_manuscript_values.R` | Checks every manuscript-reported value against regenerated outputs |
 
@@ -59,7 +59,7 @@ Values in the output files keep full precision. Rounding is applied only in the 
 | Table S1 (Panels A and B): state-level characteristics | `for_analysis/manuscript_tables/table_s1_state_characteristics.csv` | 06, 10 |
 | Table 2: primary fully adjusted model | `for_analysis/manuscript_tables/table2_primary_model.csv` | 06, 10 |
 | Table 3: primary vs Census-region-adjusted model | `for_analysis/manuscript_tables/table3_primary_vs_region_adjusted.csv` | 06, 08, 10 |
-| Table S5: sequential models (Methods; Results/Discussion statements on how SVI changes with adjustment) | `for_analysis/manuscript_tables/table_supplement_sequential_models.csv` | 06, 08, 09 |
+| Table S5: sequential models (Methods; Results/Discussion statements on how SVI changes with adjustment) | `for_analysis/manuscript_tables/table_s5_sequential_models.csv` | 06, 08, 09 |
 | Figure 1: national quarterly prescribing | `for_analysis/model_outputs/figures/fig1_national_quarterly_sglt2_rate.png` | 06 |
 | Figure 2: prescribing by rurality quintile | `for_analysis/model_outputs/figures/fig2_rurality_quintile_quarterly_sglt2_rate.png` | 06 |
 | Figure 3: prescribing by SVI quintile | `for_analysis/model_outputs/figures/fig3_svi_quintile_quarterly_sglt2_rate.png` | 06 |
@@ -69,9 +69,10 @@ Values in the output files keep full precision. Rounding is applied only in the 
 | Figure S2: state SVI vs mean prescribing | `for_analysis/model_outputs/figures/fig5_scatter_svi_vs_state_mean_rate.png` | 06 |
 | Figure S3: state-quarter heatmap | `for_analysis/model_outputs/figures/fig6_state_quarter_heatmap_sglt2_rate.png` | 06 |
 | Figure S4: restricted-outcome sensitivity | `for_analysis/model_outputs/figures/fig8_sensitivity_outcome_comparison_forest_plot.png` | 07 |
-| Table S2: national quarterly prescribing | `for_analysis/model_outputs/tables/descriptive_national_quarterly_trend.csv` | 06 |
-| Table S3: rurality-quintile quarterly prescribing | `for_analysis/model_outputs/tables/descriptive_rurality_quarterly_trend.csv` | 06 |
-| Table S4: SVI-quintile quarterly prescribing | `for_analysis/model_outputs/tables/descriptive_svi_quarterly_trend.csv` | 06 |
+| Table S2: national quarterly prescribing | `for_analysis/manuscript_tables/table_s2_national_quarterly.csv` | 06, 10 |
+| Table S3: rurality-quintile quarterly prescribing | `for_analysis/manuscript_tables/table_s3_rurality_quintile_quarterly.csv` | 06, 10 |
+| Table S4: SVI-quintile quarterly prescribing | `for_analysis/manuscript_tables/table_s4_svi_quintile_quarterly.csv` | 06, 10 |
+| Tables S2–S5, rounded for presentation with titles and footnotes | `for_analysis/manuscript_tables/supplementary_tables_S2_S5.xlsx` | 10 |
 | Restricted-outcome estimates | `for_analysis/model_outputs/tables/sensitivity_outcome_comparison_key_results.csv` | 07 |
 | Continuous-rurality sensitivity | `for_analysis/model_outputs/tables/main_model_key_results.csv` (`sensitivity_continuous_rurality`) | 06 |
 | Full coefficient tables | `for_analysis/model_outputs/tables/*_coefficients.csv` | 06, 09 |
