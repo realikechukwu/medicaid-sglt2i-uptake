@@ -1,0 +1,66 @@
+# macOS / local filesystem metadata
+.DS_Store
+**/.DS_Store
+
+# R / RStudio local state
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+
+# Large raw SDUD source files
+# These annual Medicaid SDUD CSVs are several GB in total and should not be committed.
+data_raw/sdud
+
+# Local database and transient query files
+*.duckdb
+*.duckdb.wal
+*.duckdb.tmp
+data_processed/sdud_analysis.duckdb*
+
+# Script and package caches
+.Rcache/
+renv/library/
+renv/staging/
+packrat/lib*/
+packrat/src/
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+~$*
+
+# Generated manuscript/report intermediates
+*.aux
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+.positai
+
+# Raw downloads not used by the analysis pipeline (kept locally only)
+data_raw/covariates/*.csv
+data_raw/covariates/svi/SVI_2014_US_county.csv
+data_raw/covariates/svi/SVI_2016_US_county.csv
+data_raw/covariates/svi/SVI_2018_US_county.csv
+data_raw/covariates/svi/SVI_2020_US_county.csv
+
+# Project-root marker used for scratch copies
+.here
+
+# ---------------------------------------------------------------------------
+# Code-only public repository
+# Data, processed outputs, docs and analysis outputs are kept locally only.
+# The folders exist in the repo (via .gitkeep) but their contents are ignored.
+# ---------------------------------------------------------------------------
+data_raw/**
+!data_raw/.gitkeep
+data_processed/**
+!data_processed/.gitkeep
+docs/**
+!docs/.gitkeep
+for_analysis/**
+!for_analysis/.gitkeep
+Rplots.pdf
